@@ -1,9 +1,13 @@
 import React from 'react';
-import { Rocket, Gamepad2, Code, Layers, Figma, Palette, Lightbulb } from 'lucide-react';
+import { AppWindow, ToyBrick, Puzzle, Code, Layers, Figma, Palette, Lightbulb } from 'lucide-react';
 
-const AboutPage: React.FC = () => {
+interface AboutPageProps {
+  onOpenContact?: () => void;
+}
+
+const AboutPage: React.FC<AboutPageProps> = ({ onOpenContact }) => {
   return (
-    <div className="pt-32 pb-20 px-6 min-h-screen overflow-hidden">
+    <div className="pt-52 pb-20 px-6 min-h-screen overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
         {/* --- Top Section: Intro & Avatar --- */}
@@ -23,24 +27,80 @@ const AboutPage: React.FC = () => {
           {/* Center Avatar */}
           <div className="relative group">
             {/* Thought Bubble */}
-            <div className="absolute -top-12 -right-12 bg-white text-black p-3 rounded-2xl rounded-bl-none shadow-[0_0_20px_rgba(255,255,255,0.4)] animate-bounce z-20">
-              <Lightbulb className="text-yellow-500 fill-yellow-500" size={24} />
+            <div className="absolute -top-16 -right-16 bg-white text-black p-5 rounded-3xl rounded-bl-none shadow-[0_0_30px_rgba(255,255,255,0.5)] animate-bounce z-20">
+              <Lightbulb className="text-yellow-500 fill-yellow-500" size={36} />
             </div>
 
             {/* Avatar Circle with Gradient Border */}
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full p-[6px] bg-gradient-to-tr from-cyan-400 via-purple-500 to-pink-500 shadow-[0_0_40px_rgba(168,85,247,0.5)]">
-               <div className="w-full h-full rounded-full bg-indigo-950 overflow-hidden relative">
-                 {/* Simple CSS Avatar Representation */}
-                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-56 bg-[#fca5a5] rounded-t-[3rem]">
-                    {/* Hair */}
-                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-48 h-24 bg-indigo-900 rounded-full"></div>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-44 h-12 bg-indigo-900 rounded-b-xl"></div>
-                    {/* Face */}
-                    <div className="absolute top-16 left-8 w-3 h-3 bg-black rounded-full"></div> {/* Eye L */}
-                    <div className="absolute top-16 right-8 w-3 h-3 bg-black rounded-full"></div> {/* Eye R */}
-                    <div className="absolute top-24 left-1/2 -translate-x-1/2 w-8 h-4 bg-red-400 rounded-b-full"></div> {/* Mouth */}
-                    {/* Shirt */}
-                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-48 h-24 bg-green-400 rounded-t-full"></div>
+               <div className="w-full h-full rounded-full bg-gradient-to-b from-sky-300 to-sky-500 overflow-hidden relative">
+                 {/* Character with hoodie style */}
+                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-44 h-52">
+                    {/* Hoodie - behind face */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-20 bg-purple-600 rounded-t-[2rem] z-0">
+                      {/* Hoodie strings */}
+                      <div className="absolute top-2 left-1/2 -translate-x-[20px] w-1 h-6 bg-white rounded-full"></div>
+                      <div className="absolute top-2 left-1/2 translate-x-[14px] w-1 h-6 bg-white rounded-full"></div>
+                      {/* Kangaroo pocket */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-purple-700 rounded-t-xl"></div>
+                    </div>
+                    {/* Face/Head - on top */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-32 bg-[#f5d0c5] rounded-[2.5rem] z-10">
+                      {/* Hair base - smooth rounded with gradient */}
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-[120px] h-14 bg-gradient-to-b from-gray-700 via-gray-800 to-gray-700 rounded-t-[3rem] rounded-b-lg"></div>
+                      {/* Hair top layer with softer edges */}
+                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-10 bg-gradient-to-b from-gray-600 to-gray-800 rounded-t-[2.5rem]"></div>
+                      {/* Soft messy strands with rounded tips */}
+                      <div className="absolute -top-5 left-4 w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-500 rounded-full opacity-90"></div>
+                      <div className="absolute -top-6 left-7 w-3 h-7 bg-gradient-to-t from-gray-800 to-gray-600 rounded-full opacity-95"></div>
+                      <div className="absolute -top-5 left-10 w-2.5 h-5 bg-gradient-to-t from-gray-700 to-gray-400 rounded-full opacity-85"></div>
+                      <div className="absolute -top-6 right-4 w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-500 rounded-full opacity-90"></div>
+                      <div className="absolute -top-6 right-7 w-3 h-7 bg-gradient-to-t from-gray-800 to-gray-600 rounded-full opacity-95"></div>
+                      <div className="absolute -top-5 right-10 w-2.5 h-5 bg-gradient-to-t from-gray-700 to-gray-400 rounded-full opacity-85"></div>
+                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-4 h-7 bg-gradient-to-t from-gray-800 to-gray-500 rounded-full"></div>
+                      <div className="absolute -top-5 left-1/2 -translate-x-[12px] w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-400 rounded-full opacity-90"></div>
+                      <div className="absolute -top-5 left-1/2 translate-x-[8px] w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-500 rounded-full opacity-90"></div>
+                      {/* Smooth side hair */}
+                      <div className="absolute top-0 left-0 w-6 h-8 bg-gradient-to-r from-gray-600 to-transparent rounded-bl-2xl rounded-tr-xl"></div>
+                      <div className="absolute top-0 right-0 w-6 h-8 bg-gradient-to-l from-gray-600 to-transparent rounded-br-2xl rounded-tl-xl"></div>
+                      {/* Gray temple highlights - blended */}
+                      <div className="absolute top-3 left-0 w-6 h-4 bg-gradient-to-r from-gray-400 to-transparent rounded-r-full opacity-60"></div>
+                      <div className="absolute top-3 right-0 w-6 h-4 bg-gradient-to-l from-gray-400 to-transparent rounded-l-full opacity-60"></div>
+                      {/* Eyebrows */}
+                      <div className="absolute top-12 left-5 w-5 h-1.5 bg-gray-700 rounded-full rotate-[-5deg]"></div>
+                      <div className="absolute top-12 right-5 w-5 h-1.5 bg-gray-700 rounded-full rotate-[5deg]"></div>
+                      {/* Eyes */}
+                      <div className="absolute top-16 left-6 w-4 h-4 bg-white rounded-full">
+                        <div className="absolute top-1 left-1 w-2.5 h-2.5 bg-stone-800 rounded-full"></div>
+                      </div>
+                      <div className="absolute top-16 right-6 w-4 h-4 bg-white rounded-full">
+                        <div className="absolute top-1 right-1 w-2.5 h-2.5 bg-stone-800 rounded-full"></div>
+                      </div>
+                      {/* Nose */}
+                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-2 h-3 bg-[#e8bfb5] rounded-full"></div>
+                      {/* Chin Beard - thin and light */}
+                      <div className="absolute top-[98px] left-1/2 -translate-x-1/2 w-6 h-5 bg-gray-400 rounded-b-xl opacity-50"></div>
+                      {/* Smile */}
+                      <div className="absolute top-[94px] left-1/2 -translate-x-1/2 w-5 h-2 border-b-[3px] border-red-400 rounded-b-full"></div>
+                      {/* Cheeks */}
+                      <div className="absolute top-20 left-2 w-4 h-3 bg-pink-300 rounded-full opacity-40"></div>
+                      <div className="absolute top-20 right-2 w-4 h-3 bg-pink-300 rounded-full opacity-40"></div>
+                    </div>
+                 </div>
+                 {/* Laptop in front - back side view */}
+                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20">
+                   {/* Laptop Lid (back side) */}
+                   <div className="w-28 h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-md border-2 border-gray-400 relative shadow-inner">
+                     {/* Apple-style logo or simple design element */}
+                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-7 flex items-center justify-center">
+                       <div className="w-5 h-6 bg-gray-400 rounded-md opacity-60"></div>
+                       <div className="absolute w-1.5 h-1.5 bg-gray-500 rounded-full -top-0.5"></div>
+                     </div>
+                   </div>
+                   {/* Laptop Base/Keyboard area */}
+                   <div className="w-32 h-2 bg-gray-400 rounded-b-md -mt-0.5 mx-auto relative">
+                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-1 bg-gray-500 rounded-full"></div>
+                   </div>
                  </div>
                </div>
             </div>
@@ -48,9 +108,12 @@ const AboutPage: React.FC = () => {
 
           {/* Right Text */}
           <div className="hidden md:block">
-             <h2 className="text-4xl font-black text-[#bef264] drop-shadow-[0_0_10px_rgba(190,242,100,0.5)] -rotate-6">
+             <button
+               onClick={onOpenContact}
+               className="text-4xl font-black text-[#bef264] drop-shadow-[0_0_10px_rgba(190,242,100,0.5)] -rotate-6 hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(190,242,100,0.8)] transition-all duration-300 cursor-pointer bg-transparent border-none"
+             >
                LET'S CHAT!
-             </h2>
+             </button>
           </div>
         </div>
 
@@ -66,8 +129,8 @@ const AboutPage: React.FC = () => {
                 <div className="absolute top-[-50px] right-[-50px] w-40 h-40 bg-pink-400 rounded-full blur-3xl opacity-50"></div>
                 <div className="absolute bottom-[-50px] left-[-50px] w-40 h-40 bg-blue-400 rounded-full blur-3xl opacity-50"></div>
                 
-                <p className="relative z-10 text-xl md:text-2xl font-bold leading-relaxed text-white drop-shadow-md">
-                   Started coding with retro games... fell in love with html/css design.. now I build digital playgrounds!
+                <p className="relative z-10 text-xl md:text-2xl font-small leading-relaxed text-white drop-shadow-md">
+                   I started shaping interfaces the way some people build Lego sets—one playful piece at a time. Now I design intuitive experiences by day and build side projects by night. For me, good design (and good teamwork) turns complexity into clarity.
                 </p>
              </div>
 
@@ -76,11 +139,22 @@ const AboutPage: React.FC = () => {
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
                 
                 {/* Floating Elements */}
-                <Rocket className="absolute top-10 right-10 text-purple-600 animate-float" size={64} />
-                <div className="absolute top-1/2 left-10 w-16 h-16 bg-pink-500 rounded-full blur-md opacity-80 animate-float-delayed"></div>
-                <div className="absolute bottom-10 left-20 w-8 h-8 bg-white rounded-full opacity-60 animate-bounce"></div>
-                
-                <Gamepad2 className="text-indigo-900 drop-shadow-2xl relative z-10 rotate-12" size={120} />
+                {/* Website Icon - Center */}
+                <AppWindow className="text-indigo-900 drop-shadow-2xl relative z-10 rotate-12" size={100} />
+
+                {/* Multiple Lego Pieces */}
+                <ToyBrick className="absolute top-16 left-12 text-pink-600 animate-float-delayed rotate-[-20deg]" size={48} />
+                <ToyBrick className="absolute bottom-12 right-16 text-cyan-500 animate-float rotate-[25deg]" size={56} />
+                <ToyBrick className="absolute bottom-20 left-28 text-yellow-500 animate-bounce rotate-[-10deg]" size={36} />
+                <ToyBrick className="absolute top-8 left-1/3 text-orange-500 animate-float-slow rotate-[15deg]" size={40} />
+
+                {/* Multiple Puzzle Pieces */}
+                <Puzzle className="absolute top-10 right-10 text-purple-600 animate-float rotate-[10deg]" size={52} />
+                <Puzzle className="absolute bottom-8 right-1/3 text-pink-500 animate-float-delayed rotate-[-15deg]" size={38} />
+                <Puzzle className="absolute top-1/3 right-20 text-emerald-500 animate-bounce rotate-[20deg]" size={44} />
+                <Puzzle className="absolute bottom-16 left-10 text-blue-500 animate-float-slow rotate-[-25deg]" size={32} />
+                <Puzzle className="absolute top-6 left-16 text-rose-400 animate-float rotate-[5deg]" size={28} />
+                <Puzzle className="absolute bottom-6 right-8 text-amber-400 animate-float-delayed rotate-[-8deg]" size={46} />
              </div>
           </div>
         </div>

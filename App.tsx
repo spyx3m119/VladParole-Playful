@@ -42,7 +42,7 @@ const App: React.FC = () => {
 
         {currentView === 'about' && (
           <>
-            <AboutPage />
+            <AboutPage onOpenContact={() => setIsContactOpen(true)} />
             <Footer onOpenContact={() => setIsContactOpen(true)} />
           </>
         )}
