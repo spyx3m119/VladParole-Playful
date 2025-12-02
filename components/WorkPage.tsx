@@ -9,7 +9,7 @@ interface Project {
   title: string;
   subtitle?: string;
   description: string;
-  category: string;
+  categories: string[];
   titleColor: string;
   gradientFrom: string;
   gradientTo: string;
@@ -22,7 +22,7 @@ const projects: Project[] = [
     id: 1,
     title: 'ECO-BUDGET APP',
     description: 'Toordow doie semres peurstruid acroafftiert.',
-    category: 'React',
+    categories: ['React', 'Figma/Design'],
     titleColor: 'text-cyan-300',
     gradientFrom: 'from-pink-400',
     gradientTo: 'to-purple-600',
@@ -33,7 +33,7 @@ const projects: Project[] = [
     id: 2,
     title: 'GALACTIC CAFE WEBSITE',
     description: 'Tocerber thlee dor aclodder ivadfrer sercolorpe iontais.',
-    category: 'Wordpress',
+    categories: ['Wordpress', 'Figma/Design'],
     titleColor: 'text-white',
     gradientFrom: 'from-purple-500',
     gradientTo: 'to-indigo-700',
@@ -45,7 +45,7 @@ const projects: Project[] = [
     title: 'CALCATIC',
     subtitle: 'POSTERS',
     description: 'Tieresleer tnesis toastrack eriblam pandos.',
-    category: 'Figma/Design',
+    categories: ['Figma/Design'],
     titleColor: 'text-white',
     gradientFrom: 'from-indigo-500',
     gradientTo: 'to-purple-700',
@@ -56,7 +56,7 @@ const projects: Project[] = [
     id: 4,
     title: 'DASHBOARD REDESIGN',
     description: 'Reimagining data visualization for clarity.',
-    category: 'React',
+    categories: ['React', 'Figma/Design'],
     titleColor: 'text-orange-300',
     gradientFrom: 'from-orange-400',
     gradientTo: 'to-red-600',
@@ -67,7 +67,7 @@ const projects: Project[] = [
     id: 5,
     title: 'HEALTH TRACKER',
     description: 'Wellness monitoring made simple.',
-    category: 'React',
+    categories: ['React'],
     titleColor: 'text-emerald-300',
     gradientFrom: 'from-emerald-400',
     gradientTo: 'to-teal-600',
@@ -78,7 +78,7 @@ const projects: Project[] = [
     id: 6,
     title: 'VINTAGE BOUTIQUE',
     description: 'E-commerce store with retro aesthetics.',
-    category: 'Shopify',
+    categories: ['Shopify', 'Figma/Design'],
     titleColor: 'text-amber-300',
     gradientFrom: 'from-amber-400',
     gradientTo: 'to-orange-600',
@@ -89,7 +89,7 @@ const projects: Project[] = [
     id: 7,
     title: 'REAL ESTATE CMS',
     description: 'Property management made effortless.',
-    category: 'PHP',
+    categories: ['PHP', 'Wordpress'],
     titleColor: 'text-blue-300',
     gradientFrom: 'from-blue-400',
     gradientTo: 'to-indigo-600',
@@ -100,7 +100,7 @@ const projects: Project[] = [
     id: 8,
     title: 'BRAND IDENTITY',
     description: 'Complete visual identity system design.',
-    category: 'Figma/Design',
+    categories: ['Figma/Design'],
     titleColor: 'text-rose-300',
     gradientFrom: 'from-rose-400',
     gradientTo: 'to-pink-600',
@@ -111,7 +111,7 @@ const projects: Project[] = [
     id: 9,
     title: 'BLOG THEME',
     description: 'Minimalist theme for content creators.',
-    category: 'Wordpress',
+    categories: ['Wordpress', 'PHP'],
     titleColor: 'text-violet-300',
     gradientFrom: 'from-violet-400',
     gradientTo: 'to-purple-600',
@@ -136,7 +136,7 @@ interface BrandingItem {
   id: number;
   title: string;
   subtitle?: string;
-  category: string;
+  categories: string[];
   gradientFrom: string;
   gradientTo: string;
   emoji?: string;
@@ -147,7 +147,7 @@ const brandingItems: BrandingItem[] = [
   {
     id: 1,
     title: '',
-    category: 'Illustrations',
+    categories: ['Illustrations'],
     gradientFrom: 'from-orange-400',
     gradientTo: 'to-pink-500',
     emoji: '😊',
@@ -157,7 +157,7 @@ const brandingItems: BrandingItem[] = [
     id: 2,
     title: 'BACMILIS',
     subtitle: 'AGAS',
-    category: 'Branding',
+    categories: ['Branding', 'Logos'],
     gradientFrom: 'from-pink-300',
     gradientTo: 'to-purple-400',
     variant: 'text',
@@ -165,7 +165,7 @@ const brandingItems: BrandingItem[] = [
   {
     id: 3,
     title: '',
-    category: 'Illustrations',
+    categories: ['Illustrations'],
     gradientFrom: 'from-indigo-500',
     gradientTo: 'to-indigo-500',
     variant: 'face',
@@ -174,7 +174,7 @@ const brandingItems: BrandingItem[] = [
     id: 4,
     title: 'AURORA',
     subtitle: 'LOGOS',
-    category: 'Logos',
+    categories: ['Logos', 'Branding'],
     gradientFrom: 'from-cyan-400',
     gradientTo: 'to-blue-600',
     variant: 'text',
@@ -182,7 +182,7 @@ const brandingItems: BrandingItem[] = [
   {
     id: 5,
     title: 'COSMIC',
-    category: 'Typography',
+    categories: ['Typography', 'Illustrations'],
     gradientFrom: 'from-purple-900',
     gradientTo: 'to-purple-900',
     variant: 'cosmic',
@@ -191,7 +191,7 @@ const brandingItems: BrandingItem[] = [
     id: 6,
     title: 'STARTER',
     subtitle: 'KIT',
-    category: 'Web Design & Prototypes',
+    categories: ['Web Design & Prototypes', 'Branding'],
     gradientFrom: 'from-emerald-400',
     gradientTo: 'to-teal-600',
     variant: 'text',
@@ -199,7 +199,7 @@ const brandingItems: BrandingItem[] = [
   {
     id: 7,
     title: 'NEXUS',
-    category: 'Logos',
+    categories: ['Logos'],
     gradientFrom: 'from-rose-400',
     gradientTo: 'to-red-600',
     variant: 'text',
@@ -207,7 +207,7 @@ const brandingItems: BrandingItem[] = [
   {
     id: 8,
     title: '',
-    category: 'Illustrations',
+    categories: ['Illustrations', 'Typography'],
     gradientFrom: 'from-yellow-400',
     gradientTo: 'to-amber-500',
     emoji: '🎨',
@@ -217,16 +217,40 @@ const brandingItems: BrandingItem[] = [
 
 const WorkPage: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [activeBrandingFilter, setActiveBrandingFilter] = useState('All');
+  const [activeFilters, setActiveFilters] = useState<string[]>(['All']);
+  const [activeBrandingFilters, setActiveBrandingFilters] = useState<string[]>(['All']);
 
-  const filteredProjects = activeFilter === 'All'
+  const toggleFilter = (filter: string) => {
+    setActiveFilters(prev => {
+      if (filter === 'All') return ['All'];
+      const withoutAll = prev.filter(f => f !== 'All');
+      if (prev.includes(filter)) {
+        const newFilters = withoutAll.filter(f => f !== filter);
+        return newFilters.length === 0 ? ['All'] : newFilters;
+      }
+      return [...withoutAll, filter];
+    });
+  };
+
+  const toggleBrandingFilter = (filter: string) => {
+    setActiveBrandingFilters(prev => {
+      if (filter === 'All') return ['All'];
+      const withoutAll = prev.filter(f => f !== 'All');
+      if (prev.includes(filter)) {
+        const newFilters = withoutAll.filter(f => f !== filter);
+        return newFilters.length === 0 ? ['All'] : newFilters;
+      }
+      return [...withoutAll, filter];
+    });
+  };
+
+  const filteredProjects = activeFilters.includes('All')
     ? projects
-    : projects.filter(project => project.category === activeFilter);
+    : projects.filter(project => project.categories.some(cat => activeFilters.includes(cat)));
 
-  const filteredBrandingItems = activeBrandingFilter === 'All'
+  const filteredBrandingItems = activeBrandingFilters.includes('All')
     ? brandingItems
-    : brandingItems.filter(item => item.category === activeBrandingFilter);
+    : brandingItems.filter(item => item.categories.some(cat => activeBrandingFilters.includes(cat)));
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -333,9 +357,9 @@ const WorkPage: React.FC = () => {
               {filters.map((filter) => (
                 <button
                   key={filter}
-                  onClick={() => setActiveFilter(filter)}
+                  onClick={() => toggleFilter(filter)}
                   className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
-                    activeFilter === filter
+                    activeFilters.includes(filter)
                       ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.5),inset_0_0_10px_rgba(34,211,238,0.1)]'
                       : 'text-gray-400 border border-transparent hover:text-white hover:bg-white/5'
                   }`}
@@ -371,9 +395,13 @@ const WorkPage: React.FC = () => {
                     <h3 className={`text-2xl font-bold ${project.titleColor} mb-2`}>{project.title}</h3>
                   )}
                   <p className="text-gray-400 text-xs leading-relaxed">{project.description}</p>
-                  <span className="inline-block mt-3 px-3 py-1 rounded-full bg-white/10 text-[10px] text-gray-300 font-medium">
-                    {project.category}
-                  </span>
+                  <div className="flex flex-wrap gap-1 mt-3">
+                    {project.categories.map((cat) => (
+                      <span key={cat} className="inline-block px-3 py-1 rounded-full bg-white/10 text-[10px] text-gray-300 font-medium">
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {project.variant === 'monitor' ? (
@@ -417,9 +445,9 @@ const WorkPage: React.FC = () => {
               {brandingFilters.map((filter) => (
                 <button
                   key={filter}
-                  onClick={() => setActiveBrandingFilter(filter)}
+                  onClick={() => toggleBrandingFilter(filter)}
                   className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
-                    activeBrandingFilter === filter
+                    activeBrandingFilters.includes(filter)
                       ? 'bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-400 border border-orange-400/50 shadow-[0_0_15px_rgba(251,146,60,0.5),inset_0_0_10px_rgba(251,146,60,0.1)]'
                       : 'text-gray-400 border border-transparent hover:text-white hover:bg-white/5'
                   }`}
@@ -468,13 +496,17 @@ const WorkPage: React.FC = () => {
                 {item.variant === 'cosmic' && (
                   <div className={`absolute inset-4 ${item.gradientFrom === item.gradientTo ? 'bg-purple-900' : `bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo}`} rounded-[1.5rem] flex items-center justify-center overflow-hidden border border-white/10`}>
                     <h4 className="font-black text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500 opacity-80 rotate-12">{item.title}</h4>
-                    <div className="absolute bottom-2 text-xs font-bold text-white/50 uppercase tracking-widest">{item.category}</div>
+                    <div className="absolute bottom-2 text-xs font-bold text-white/50 uppercase tracking-widest">{item.categories[0]}</div>
                   </div>
                 )}
 
-                {/* Category badge */}
-                <div className="absolute top-2 right-2 px-2 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[10px] text-white/70 font-medium z-10">
-                  {item.category}
+                {/* Category badges */}
+                <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end z-10">
+                  {item.categories.map((cat) => (
+                    <span key={cat} className="px-2 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[10px] text-white/70 font-medium">
+                      {cat}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
