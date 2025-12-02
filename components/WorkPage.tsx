@@ -1,7 +1,243 @@
-import React from 'react';
-import { ArrowRight, Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2 } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const filters = ['All', 'React', 'PHP', 'Shopify', 'Wordpress', 'Figma/Design'];
+const brandingFilters = ['All', 'Logos', 'Branding', 'Illustrations', 'Typography', 'Web Design & Prototypes'];
+
+interface Project {
+  id: number;
+  title: string;
+  subtitle?: string;
+  description: string;
+  category: string;
+  titleColor: string;
+  gradientFrom: string;
+  gradientTo: string;
+  icon: 'smartphone' | 'monitor' | 'layers' | 'sparkles' | 'palette' | 'pentool';
+  variant: 'phone' | 'monitor' | 'minimal';
+}
+
+const projects: Project[] = [
+  {
+    id: 1,
+    title: 'ECO-BUDGET APP',
+    description: 'Toordow doie semres peurstruid acroafftiert.',
+    category: 'React',
+    titleColor: 'text-cyan-300',
+    gradientFrom: 'from-pink-400',
+    gradientTo: 'to-purple-600',
+    icon: 'smartphone',
+    variant: 'phone',
+  },
+  {
+    id: 2,
+    title: 'GALACTIC CAFE WEBSITE',
+    description: 'Tocerber thlee dor aclodder ivadfrer sercolorpe iontais.',
+    category: 'Wordpress',
+    titleColor: 'text-white',
+    gradientFrom: 'from-purple-500',
+    gradientTo: 'to-indigo-700',
+    icon: 'monitor',
+    variant: 'monitor',
+  },
+  {
+    id: 3,
+    title: 'CALCATIC',
+    subtitle: 'POSTERS',
+    description: 'Tieresleer tnesis toastrack eriblam pandos.',
+    category: 'Figma/Design',
+    titleColor: 'text-white',
+    gradientFrom: 'from-indigo-500',
+    gradientTo: 'to-purple-700',
+    icon: 'palette',
+    variant: 'minimal',
+  },
+  {
+    id: 4,
+    title: 'DASHBOARD REDESIGN',
+    description: 'Reimagining data visualization for clarity.',
+    category: 'React',
+    titleColor: 'text-orange-300',
+    gradientFrom: 'from-orange-400',
+    gradientTo: 'to-red-600',
+    icon: 'layers',
+    variant: 'phone',
+  },
+  {
+    id: 5,
+    title: 'HEALTH TRACKER',
+    description: 'Wellness monitoring made simple.',
+    category: 'React',
+    titleColor: 'text-emerald-300',
+    gradientFrom: 'from-emerald-400',
+    gradientTo: 'to-teal-600',
+    icon: 'sparkles',
+    variant: 'phone',
+  },
+  {
+    id: 6,
+    title: 'VINTAGE BOUTIQUE',
+    description: 'E-commerce store with retro aesthetics.',
+    category: 'Shopify',
+    titleColor: 'text-amber-300',
+    gradientFrom: 'from-amber-400',
+    gradientTo: 'to-orange-600',
+    icon: 'palette',
+    variant: 'phone',
+  },
+  {
+    id: 7,
+    title: 'REAL ESTATE CMS',
+    description: 'Property management made effortless.',
+    category: 'PHP',
+    titleColor: 'text-blue-300',
+    gradientFrom: 'from-blue-400',
+    gradientTo: 'to-indigo-600',
+    icon: 'monitor',
+    variant: 'monitor',
+  },
+  {
+    id: 8,
+    title: 'BRAND IDENTITY',
+    description: 'Complete visual identity system design.',
+    category: 'Figma/Design',
+    titleColor: 'text-rose-300',
+    gradientFrom: 'from-rose-400',
+    gradientTo: 'to-pink-600',
+    icon: 'pentool',
+    variant: 'minimal',
+  },
+  {
+    id: 9,
+    title: 'BLOG THEME',
+    description: 'Minimalist theme for content creators.',
+    category: 'Wordpress',
+    titleColor: 'text-violet-300',
+    gradientFrom: 'from-violet-400',
+    gradientTo: 'to-purple-600',
+    icon: 'layers',
+    variant: 'phone',
+  },
+];
+
+const getIcon = (iconName: Project['icon'], size: number) => {
+  switch (iconName) {
+    case 'smartphone': return <Smartphone className="text-white/80" size={size} />;
+    case 'monitor': return <Monitor className="text-cyan-200 relative z-10" size={size} />;
+    case 'layers': return <Layers className="text-white/80" size={size} />;
+    case 'sparkles': return <Sparkles className="text-white/80" size={size} />;
+    case 'palette': return <Palette className="text-white/80" size={size} />;
+    case 'pentool': return <PenTool className="text-white/80" size={size} />;
+    default: return <Smartphone className="text-white/80" size={size} />;
+  }
+};
+
+interface BrandingItem {
+  id: number;
+  title: string;
+  subtitle?: string;
+  category: string;
+  gradientFrom: string;
+  gradientTo: string;
+  emoji?: string;
+  variant: 'emoji' | 'text' | 'face' | 'cosmic';
+}
+
+const brandingItems: BrandingItem[] = [
+  {
+    id: 1,
+    title: '',
+    category: 'Illustrations',
+    gradientFrom: 'from-orange-400',
+    gradientTo: 'to-pink-500',
+    emoji: '😊',
+    variant: 'emoji',
+  },
+  {
+    id: 2,
+    title: 'BACMILIS',
+    subtitle: 'AGAS',
+    category: 'Branding',
+    gradientFrom: 'from-pink-300',
+    gradientTo: 'to-purple-400',
+    variant: 'text',
+  },
+  {
+    id: 3,
+    title: '',
+    category: 'Illustrations',
+    gradientFrom: 'from-indigo-500',
+    gradientTo: 'to-indigo-500',
+    variant: 'face',
+  },
+  {
+    id: 4,
+    title: 'AURORA',
+    subtitle: 'LOGOS',
+    category: 'Logos',
+    gradientFrom: 'from-cyan-400',
+    gradientTo: 'to-blue-600',
+    variant: 'text',
+  },
+  {
+    id: 5,
+    title: 'COSMIC',
+    category: 'Typography',
+    gradientFrom: 'from-purple-900',
+    gradientTo: 'to-purple-900',
+    variant: 'cosmic',
+  },
+  {
+    id: 6,
+    title: 'STARTER',
+    subtitle: 'KIT',
+    category: 'Web Design & Prototypes',
+    gradientFrom: 'from-emerald-400',
+    gradientTo: 'to-teal-600',
+    variant: 'text',
+  },
+  {
+    id: 7,
+    title: 'NEXUS',
+    category: 'Logos',
+    gradientFrom: 'from-rose-400',
+    gradientTo: 'to-red-600',
+    variant: 'text',
+  },
+  {
+    id: 8,
+    title: '',
+    category: 'Illustrations',
+    gradientFrom: 'from-yellow-400',
+    gradientTo: 'to-amber-500',
+    emoji: '🎨',
+    variant: 'emoji',
+  },
+];
 
 const WorkPage: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeBrandingFilter, setActiveBrandingFilter] = useState('All');
+
+  const filteredProjects = activeFilter === 'All'
+    ? projects
+    : projects.filter(project => project.category === activeFilter);
+
+  const filteredBrandingItems = activeBrandingFilter === 'All'
+    ? brandingItems
+    : brandingItems.filter(item => item.category === activeBrandingFilter);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 400;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="pt-28 pb-20 px-6 min-h-screen">
       <div className="max-w-6xl mx-auto">
@@ -72,138 +308,190 @@ const WorkPage: React.FC = () => {
 
         {/* --- UI/UX PROJECTS SECTION --- */}
         <div className="mb-20">
-          <div className="flex justify-between items-center mb-8">
-            <div className="px-6 py-2 rounded-full bg-[#4ade80] border-2 border-green-300 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
-              <span className="text-black font-black text-sm tracking-wide">UI/UX PROJECTS</span>
+          <div className="flex flex-col gap-4 mb-8">
+            <div className="flex justify-between items-center">
+              <div className="px-6 py-2 rounded-full bg-[#4ade80] border-2 border-green-300 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
+                <span className="text-black font-black text-sm tracking-wide">UI/UX PROJECTS</span>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => scroll('left')}
+                  className="w-10 h-10 rounded-full bg-[#1e293b] border border-white/10 flex items-center justify-center text-white hover:bg-[#4ade80] hover:text-black transition-all duration-300"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={() => scroll('right')}
+                  className="w-10 h-10 rounded-full bg-[#1e293b] border border-white/10 flex items-center justify-center text-white hover:bg-[#4ade80] hover:text-black transition-all duration-300"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
             </div>
-            <div className="px-4 py-2 rounded-full bg-[#1e293b] text-gray-400 text-xs font-bold">OLP</div>
+            {/* Filter Pills - Segmented Control with Glass & Neon */}
+            <div className="inline-flex rounded-full bg-white/5 backdrop-blur-md border border-white/10 p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
+                    activeFilter === filter
+                      ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.5),inset_0_0_10px_rgba(34,211,238,0.1)]'
+                      : 'text-gray-400 border border-transparent hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300">
-              <div className="p-8 pb-32 relative z-10">
-                <div className="flex gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-pink-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 min-w-[350px] flex-shrink-0"
+              >
+                <div className="p-8 pb-32 relative z-10">
+                  <div className="flex gap-2 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-pink-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                  </div>
+                  {project.subtitle ? (
+                    <>
+                      <h3 className={`text-xl font-bold ${project.titleColor} mb-1`}>{project.title}</h3>
+                      <h3 className="text-xl font-bold text-cyan-400 mb-2">{project.subtitle}</h3>
+                    </>
+                  ) : (
+                    <h3 className={`text-2xl font-bold ${project.titleColor} mb-2`}>{project.title}</h3>
+                  )}
+                  <p className="text-gray-400 text-xs leading-relaxed">{project.description}</p>
+                  <span className="inline-block mt-3 px-3 py-1 rounded-full bg-white/10 text-[10px] text-gray-300 font-medium">
+                    {project.category}
+                  </span>
                 </div>
-                <h3 className="text-2xl font-bold text-cyan-300 mb-2">ECO-BUDGET APP</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">Toordow doie semres peurstruid acroafftiert.</p>
-              </div>
-              <div className="absolute bottom-0 right-0 w-full h-48 bg-gradient-to-t from-pink-500/20 to-transparent"></div>
-              {/* Abstract App Visual */}
-              <div className="absolute bottom-[-20px] right-[-20px] w-40 h-56 bg-gradient-to-br from-pink-400 to-purple-600 rounded-3xl transform -rotate-12 group-hover:-rotate-6 transition-transform duration-500 shadow-2xl flex items-center justify-center border-4 border-[#1e1b4b]">
-                 <Smartphone className="text-white/80" size={48} />
-              </div>
-            </div>
 
-            {/* Card 2 */}
-            <div className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300">
-              <div className="p-8 pb-32 relative z-10">
-                <div className="flex gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-pink-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">GALACTIC CAFE WEBSITE</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">Tocerber thlee dor aclodder ivadfrer sercolorpe iontais.</p>
+                {project.variant === 'monitor' ? (
+                  <>
+                    <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[#3b0764]/50"></div>
+                    <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-48 h-40 bg-[#312e81] rounded-t-3xl border-t-4 border-l-4 border-r-4 border-[#4338ca] group-hover:translate-y-[-10px] transition-transform duration-500 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-pink-500 rounded-full blur-md absolute top-4 left-4"></div>
+                      {getIcon(project.icon, 64)}
+                    </div>
+                  </>
+                ) : project.variant === 'minimal' ? (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradientFrom} ${project.gradientTo} opacity-20 -z-10`}></div>
+                ) : (
+                  <>
+                    <div className={`absolute bottom-0 right-0 w-full h-48 bg-gradient-to-t ${project.gradientFrom}/20 to-transparent`}></div>
+                    <div className={`absolute bottom-[-20px] right-[-20px] w-40 h-56 bg-gradient-to-br ${project.gradientFrom} ${project.gradientTo} rounded-3xl transform -rotate-12 group-hover:-rotate-6 transition-transform duration-500 shadow-2xl flex items-center justify-center border-4 border-[#1e1b4b]`}>
+                      {getIcon(project.icon, 48)}
+                    </div>
+                  </>
+                )}
               </div>
-              {/* Visual */}
-              <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[#3b0764]/50"></div>
-              <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-48 h-40 bg-[#312e81] rounded-t-3xl border-t-4 border-l-4 border-r-4 border-[#4338ca] group-hover:translate-y-[-10px] transition-transform duration-500 flex items-center justify-center">
-                 <div className="w-12 h-12 bg-pink-500 rounded-full blur-md absolute top-4 left-4"></div>
-                 <Monitor className="text-cyan-200 relative z-10" size={64} />
-              </div>
-            </div>
+            ))}
 
-            {/* Card 3 */}
-            <div className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300">
-               <div className="p-8 relative z-10">
-                <div className="flex gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-pink-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-1">CALCATIC</h3>
-                <h3 className="text-xl font-bold text-cyan-400 mb-2">POSTERS</h3>
-                <p className="text-gray-400 text-xs leading-relaxed mb-12">Tieresleer tnesis toastrack eriblam pandos.</p>
-                
-                {/* Arrow Button */}
-                <div className="absolute top-1/2 right-4 -translate-y-1/2 w-16 h-16 rounded-full border-4 border-pink-500 flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all cursor-pointer">
-                  <ArrowRight size={32} />
-                </div>
+            {filteredProjects.length === 0 && (
+              <div className="flex items-center justify-center w-full py-16 text-gray-500">
+                No projects found for this filter.
               </div>
-               {/* Background Graphic */}
-               <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 to-black -z-10"></div>
-            </div>
+            )}
           </div>
         </div>
 
         {/* --- BRANDING & ART SECTION --- */}
         <div className="mb-20">
-          <div className="px-6 py-2 rounded-full bg-[#fb923c] border-2 border-orange-300 shadow-[0_0_15px_rgba(251,146,60,0.4)] inline-block mb-8">
-            <span className="text-black font-black text-sm tracking-wide">BRANDING & ART</span>
+          <div className="flex flex-col gap-4 mb-8">
+            <div className="px-6 py-2 rounded-full bg-[#fb923c] border-2 border-orange-300 shadow-[0_0_15px_rgba(251,146,60,0.4)] inline-block self-start">
+              <span className="text-black font-black text-sm tracking-wide">BRANDING & ART</span>
+            </div>
+
+            {/* Filter Pills - Segmented Control with Glass & Neon */}
+            <div className="inline-flex flex-wrap rounded-full bg-white/5 backdrop-blur-md border border-white/10 p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.3)] self-start">
+              {brandingFilters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveBrandingFilter(filter)}
+                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
+                    activeBrandingFilter === filter
+                      ? 'bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-400 border border-orange-400/50 shadow-[0_0_15px_rgba(251,146,60,0.5),inset_0_0_10px_rgba(251,146,60,0.1)]'
+                      : 'text-gray-400 border border-transparent hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {/* Art 1 */}
-            <div className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300">
-               <div className="absolute inset-4 bg-gradient-to-br from-orange-400 to-pink-500 rounded-[1.5rem] flex items-center justify-center">
-                  <div className="text-center">
-                     <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 backdrop-blur-sm flex items-center justify-center">
-                       <span className="text-2xl">😊</span>
-                     </div>
+            {filteredBrandingItems.map((item) => (
+              <div
+                key={item.id}
+                className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300"
+              >
+                {item.variant === 'emoji' && (
+                  <div className={`absolute inset-4 bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} rounded-[1.5rem] flex items-center justify-center`}>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 backdrop-blur-sm flex items-center justify-center">
+                        <span className="text-2xl">{item.emoji}</span>
+                      </div>
+                    </div>
                   </div>
-               </div>
-            </div>
-             {/* Art 2 */}
-             <div className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300">
-               <div className="absolute inset-4 bg-gradient-to-tr from-pink-300 to-purple-400 rounded-[1.5rem] overflow-hidden">
-                   <div className="w-full h-full flex flex-col items-center justify-center">
-                      <h4 className="font-black text-white text-lg leading-none">BACMILIS</h4>
-                      <h4 className="font-black text-white text-lg leading-none">AGAS</h4>
-                   </div>
-                   {/* Swirls */}
-                   <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/swirl.png')] opacity-20"></div>
-               </div>
-            </div>
-             {/* Art 3 */}
-             <div className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300">
-               <div className="absolute inset-4 bg-indigo-500 rounded-[1.5rem] flex items-center justify-center overflow-hidden">
-                  {/* Abstract Face */}
-                  <div className="w-24 h-24 bg-orange-300 rounded-full relative">
+                )}
+
+                {item.variant === 'text' && (
+                  <div className={`absolute inset-4 bg-gradient-to-tr ${item.gradientFrom} ${item.gradientTo} rounded-[1.5rem] overflow-hidden`}>
+                    <div className="w-full h-full flex flex-col items-center justify-center">
+                      <h4 className="font-black text-white text-lg leading-none">{item.title}</h4>
+                      {item.subtitle && <h4 className="font-black text-white text-lg leading-none">{item.subtitle}</h4>}
+                    </div>
+                    <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/swirl.png')] opacity-20"></div>
+                  </div>
+                )}
+
+                {item.variant === 'face' && (
+                  <div className={`absolute inset-4 bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} rounded-[1.5rem] flex items-center justify-center overflow-hidden`}>
+                    <div className="w-24 h-24 bg-orange-300 rounded-full relative">
                       <div className="absolute top-6 left-4 w-4 h-4 bg-black rounded-full"></div>
                       <div className="absolute top-8 right-6 w-12 h-6 bg-black rounded-b-full"></div>
+                    </div>
                   </div>
-               </div>
-            </div>
-            
-             {/* Art 4 */}
-             <div className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300">
-               <div className="absolute inset-4 bg-gradient-to-bl from-cyan-400 to-blue-600 rounded-[1.5rem] flex items-center justify-center">
-                  <div className="text-center">
-                      <h4 className="font-bold text-white leading-tight">AURORA</h4>
-                      <h4 className="font-bold text-white leading-tight">LOGOS</h4>
+                )}
+
+                {item.variant === 'cosmic' && (
+                  <div className={`absolute inset-4 ${item.gradientFrom === item.gradientTo ? 'bg-purple-900' : `bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo}`} rounded-[1.5rem] flex items-center justify-center overflow-hidden border border-white/10`}>
+                    <h4 className="font-black text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500 opacity-80 rotate-12">{item.title}</h4>
+                    <div className="absolute bottom-2 text-xs font-bold text-white/50 uppercase tracking-widest">{item.category}</div>
                   </div>
-               </div>
-            </div>
-            {/* Art 5 */}
-             <div className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300">
-               <div className="absolute inset-4 bg-purple-900 rounded-[1.5rem] flex items-center justify-center overflow-hidden border border-white/10">
-                  <h4 className="font-black text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500 opacity-80 rotate-12">COSMIC</h4>
-                  <div className="absolute bottom-2 text-xs font-bold text-white/50 uppercase tracking-widest">Posters</div>
-               </div>
-            </div>
+                )}
+
+                {/* Category badge */}
+                <div className="absolute top-2 right-2 px-2 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[10px] text-white/70 font-medium z-10">
+                  {item.category}
+                </div>
+              </div>
+            ))}
+
+            {filteredBrandingItems.length === 0 && (
+              <div className="col-span-full flex items-center justify-center py-16 text-gray-500">
+                No items found for this filter.
+              </div>
+            )}
           </div>
         </div>
 
-        {/* --- INTERACTIVE EXPERIENCES SECTION --- */}
+        {/* --- PERSONAL TOOLS AND PROJECTS SECTION --- */}
         <div className="mb-20">
-          <div className="px-6 py-2 rounded-full bg-[#a855f7] border-2 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)] inline-block mb-8 float-right">
-            <span className="text-white font-black text-sm tracking-wide">INTERACTIVE EXPERIENCES</span>
+          <div className="px-6 py-2 rounded-full bg-[#a855f7] border-2 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)] inline-block mb-8">
+            <span className="text-white font-black text-sm tracking-wide">PERSONAL TOOLS AND PROJECTS</span>
           </div>
-          <div className="clear-both"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Interactive 1 */}
