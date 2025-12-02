@@ -27,7 +27,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onOpenContact }) => {
           {/* Center Avatar */}
           <div className="relative group">
             {/* Thought Bubble */}
-            <div className="absolute -top-16 -right-16 bg-white text-black p-5 rounded-3xl rounded-bl-none shadow-[0_0_30px_rgba(255,255,255,0.5)] animate-bounce z-20">
+            <div className="absolute -top-16 -right-16 bg-white text-black p-5 rounded-3xl rounded-bl-none shadow-[0_0_30px_rgba(255,255,255,0.5)] animate-float-slow z-20">
               <Lightbulb className="text-yellow-500 fill-yellow-500" size={36} />
             </div>
 
