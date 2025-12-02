@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const filters = ['All', 'React', 'PHP', 'Shopify', 'Wordpress', 'Figma/Design'];
 const brandingFilters = ['All', 'Logos', 'Branding', 'Illustrations', 'Typography', 'Web Design & Prototypes'];
@@ -9,6 +9,7 @@ interface Project {
   title: string;
   subtitle?: string;
   description: string;
+  story: string;
   categories: string[];
   titleColor: string;
   gradientFrom: string;
@@ -22,6 +23,7 @@ const projects: Project[] = [
     id: 1,
     title: 'ECO-BUDGET APP',
     description: 'Toordow doie semres peurstruid acroafftiert.',
+    story: 'This eco-conscious budgeting app was born from a personal need to track both spending and environmental impact. Built with React Native, it features real-time expense categorization with carbon footprint calculations. The biggest challenge was creating an intuitive UI that made sustainability feel accessible, not preachy. After 3 months of user testing, we achieved a 40% increase in user engagement.',
     categories: ['React', 'Figma/Design'],
     titleColor: 'text-cyan-300',
     gradientFrom: 'from-pink-400',
@@ -33,6 +35,7 @@ const projects: Project[] = [
     id: 2,
     title: 'GALACTIC CAFE WEBSITE',
     description: 'Tocerber thlee dor aclodder ivadfrer sercolorpe iontais.',
+    story: 'A whimsical website for a space-themed coffee shop in downtown. The client wanted visitors to feel like they were ordering coffee on a spaceship. I incorporated parallax scrolling, floating coffee cups, and a reservation system that mimics a spaceship booking terminal. The site increased their online orders by 65%.',
     categories: ['Wordpress', 'Figma/Design'],
     titleColor: 'text-white',
     gradientFrom: 'from-purple-500',
@@ -45,6 +48,7 @@ const projects: Project[] = [
     title: 'CALCATIC',
     subtitle: 'POSTERS',
     description: 'Tieresleer tnesis toastrack eriblam pandos.',
+    story: 'A series of minimalist posters celebrating the beauty of mathematics and cosmic patterns. Each poster visualizes a different mathematical concept—from the Fibonacci sequence to fractal geometry. Created entirely in Figma with custom gradients and geometric shapes. The collection was featured in a local art gallery exhibition.',
     categories: ['Figma/Design'],
     titleColor: 'text-white',
     gradientFrom: 'from-indigo-500',
@@ -56,6 +60,7 @@ const projects: Project[] = [
     id: 4,
     title: 'DASHBOARD REDESIGN',
     description: 'Reimagining data visualization for clarity.',
+    story: 'Tasked with reimagining a cluttered analytics dashboard used by over 10,000 daily users. The original design had 47 different metrics on one screen. Through extensive user research, I identified the 8 most critical metrics and designed a modular system where users could customize their view. Post-launch surveys showed 89% user satisfaction.',
     categories: ['React', 'Figma/Design'],
     titleColor: 'text-orange-300',
     gradientFrom: 'from-orange-400',
@@ -67,6 +72,7 @@ const projects: Project[] = [
     id: 5,
     title: 'HEALTH TRACKER',
     description: 'Wellness monitoring made simple.',
+    story: 'A comprehensive health tracking app that connects with wearable devices. The unique challenge was presenting complex health data in a way that motivates rather than overwhelms users. I designed a "health score" system with gentle animations and encouraging micro-interactions. The app now has over 50,000 active users.',
     categories: ['React'],
     titleColor: 'text-emerald-300',
     gradientFrom: 'from-emerald-400',
@@ -78,6 +84,7 @@ const projects: Project[] = [
     id: 6,
     title: 'VINTAGE BOUTIQUE',
     description: 'E-commerce store with retro aesthetics.',
+    story: 'An e-commerce platform for a vintage clothing store that wanted to feel like stepping into a 1970s boutique. Built on Shopify with heavy customization, featuring sepia-toned product photography, retro typography, and a unique "vinyl record" style product carousel. The store saw a 120% increase in average session duration.',
     categories: ['Shopify', 'Figma/Design'],
     titleColor: 'text-amber-300',
     gradientFrom: 'from-amber-400',
@@ -89,6 +96,7 @@ const projects: Project[] = [
     id: 7,
     title: 'REAL ESTATE CMS',
     description: 'Property management made effortless.',
+    story: 'A custom content management system for a real estate agency managing 500+ properties. Built with PHP and Laravel, featuring automated listing syndication, virtual tour integration, and a client portal. The biggest win was reducing property upload time from 45 minutes to just 5 minutes per listing.',
     categories: ['PHP', 'Wordpress'],
     titleColor: 'text-blue-300',
     gradientFrom: 'from-blue-400',
@@ -100,6 +108,7 @@ const projects: Project[] = [
     id: 8,
     title: 'BRAND IDENTITY',
     description: 'Complete visual identity system design.',
+    story: 'A comprehensive brand identity project for a tech startup entering the sustainable energy market. Developed the logo, color palette, typography system, and 60-page brand guidelines. The identity needed to convey innovation while remaining approachable. The final design was selected from 15 initial concepts after 8 rounds of refinement.',
     categories: ['Figma/Design'],
     titleColor: 'text-rose-300',
     gradientFrom: 'from-rose-400',
@@ -111,6 +120,7 @@ const projects: Project[] = [
     id: 9,
     title: 'BLOG THEME',
     description: 'Minimalist theme for content creators.',
+    story: 'A WordPress theme designed specifically for long-form content creators. Features include a distraction-free reading mode, estimated reading time, and beautiful typography optimized for readability. Built with accessibility in mind, achieving WCAG AA compliance. The theme has been downloaded over 5,000 times.',
     categories: ['Wordpress', 'PHP'],
     titleColor: 'text-violet-300',
     gradientFrom: 'from-violet-400',
@@ -219,6 +229,7 @@ const WorkPage: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeFilters, setActiveFilters] = useState<string[]>(['All']);
   const [activeBrandingFilters, setActiveBrandingFilters] = useState<string[]>(['All']);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const toggleFilter = (filter: string) => {
     setActiveFilters(prev => {
@@ -378,7 +389,8 @@ const WorkPage: React.FC = () => {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 min-w-[350px] flex-shrink-0"
+                onClick={() => setSelectedProject(project)}
+                className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 min-w-[350px] flex-shrink-0 cursor-pointer"
               >
                 <div className="p-8 pb-32 relative z-10">
                   <div className="flex gap-2 mb-4">
@@ -569,6 +581,81 @@ const WorkPage: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Project Story Modal */}
+      {selectedProject && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="relative max-w-2xl w-full bg-[#1e1b4b] rounded-[2rem] border border-white/10 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header with gradient */}
+            <div className={`h-32 bg-gradient-to-br ${selectedProject.gradientFrom} ${selectedProject.gradientTo} relative`}>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-colors"
+              >
+                <X className="text-white" size={20} />
+              </button>
+              <div className="absolute bottom-4 left-6 flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
+                <div className="w-3 h-3 rounded-full bg-pink-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h2 className={`text-3xl font-bold ${selectedProject.titleColor} mb-1`}>
+                    {selectedProject.title}
+                  </h2>
+                  {selectedProject.subtitle && (
+                    <h3 className="text-xl font-bold text-cyan-400">{selectedProject.subtitle}</h3>
+                  )}
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center">
+                  {getIcon(selectedProject.icon, 32)}
+                </div>
+              </div>
+
+              {/* Categories */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedProject.categories.map((cat) => (
+                  <span key={cat} className="px-4 py-1.5 rounded-full bg-white/10 text-sm text-gray-300 font-medium">
+                    {cat}
+                  </span>
+                ))}
+              </div>
+
+              {/* Story */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <Sparkles className="text-cyan-400" size={18} />
+                  The Story
+                </h4>
+                <p className="text-gray-300 leading-relaxed">
+                  {selectedProject.story}
+                </p>
+              </div>
+
+              {/* Footer */}
+              <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
