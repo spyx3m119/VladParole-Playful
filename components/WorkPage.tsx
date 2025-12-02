@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Smartphone, Monitor, Palette, Gamepad2, MousePointer2 } from 'lucide-react';
+import { ArrowRight, Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2 } from 'lucide-react';
 
 const WorkPage: React.FC = () => {
   return (
@@ -21,6 +21,53 @@ const WorkPage: React.FC = () => {
           {/* Decorative particles */}
           <div className="absolute top-0 right-1/4 w-4 h-4 bg-pink-500 rounded-full blur-[2px] animate-bounce"></div>
           <div className="absolute bottom-0 left-1/4 w-3 h-3 bg-cyan-400 rounded-full blur-[1px] animate-ping duration-[3000ms]"></div>
+        </div>
+
+        {/* --- Intro Section: Text & Animated Visual --- */}
+        <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-12 relative">
+
+          {/* Left Text */}
+          <div className="md:w-1/2 text-center md:text-left relative z-10">
+            <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+              Here's a peek at the projects that shaped my craft—adventures in designing smoother journeys, clearer paths, and friendlier interfaces. I can't share every pixel <span className="text-pink-600 font-xs">(NDA's)</span>, but I can share the stories, the impact, and all the <span className="text-cyan-400 font-medium">"aha!"</span> moments along the way. The details stay behind the curtain, yet the process, lessons, and a touch of <span className="text-pink-400 font-medium">playfulness</span> shine through.
+            </p>
+          </div>
+
+          {/* Right Animated Visual */}
+          <div className="md:w-1/2 flex justify-center items-center relative">
+            <div className="relative w-64 h-64">
+              {/* Central glowing orb */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
+
+              {/* Floating design elements */}
+              <div className="absolute top-4 left-4 w-14 h-14 bg-gradient-to-br from-pink-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg animate-float">
+                <PenTool className="text-white" size={28} />
+              </div>
+
+              <div className="absolute top-8 right-6 w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg animate-float-delayed">
+                <Layers className="text-white" size={24} />
+              </div>
+
+              <div className="absolute bottom-8 left-8 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg animate-float-slow">
+                <Sparkles className="text-white" size={32} />
+              </div>
+
+              <div className="absolute bottom-4 right-4 w-14 h-14 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl flex items-center justify-center shadow-lg animate-bounce">
+                <Wand2 className="text-white" size={28} />
+              </div>
+
+              {/* Central monitor/screen icon */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-700 rounded-2xl flex items-center justify-center shadow-2xl border-2 border-white/20">
+                <Monitor className="text-white" size={40} />
+              </div>
+
+              {/* Orbiting dots */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-pink-400 rounded-full animate-ping"></div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-cyan-400 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-3 h-3 bg-purple-400 rounded-full animate-ping" style={{animationDelay: '1.5s'}}></div>
+            </div>
+          </div>
         </div>
 
         {/* --- UI/UX PROJECTS SECTION --- */}
