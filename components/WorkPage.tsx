@@ -27,7 +27,7 @@ const projects: Project[] = [
     titleColor: 'text-rose-300',
     gradientFrom: 'from-rose-400',
     gradientTo: 'to-pink-600',
-    icon: 'layers',
+    icon: 'sparkles',
     variant: 'monitor',
   },
   {
