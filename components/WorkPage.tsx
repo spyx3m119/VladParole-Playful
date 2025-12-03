@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2, X } from 'lucide-react';
 
-const filters = ['All', 'React', 'PHP', 'Shopify', 'Wordpress', 'Figma/Design'];
-const brandingFilters = ['All', 'Logos', 'Branding', 'Illustrations', 'Typography', 'Web Design & Prototypes'];
+const filters = ['All', 'React', 'PHP', 'Shopify', 'Wordpress', 'Figma/Design', 'HTML/CSS/JS'];
 
 interface Project {
   id: number;
@@ -21,22 +20,34 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'ECO-BUDGET APP',
-    description: 'Toordow doie semres peurstruid acroafftiert.',
-    story: 'This eco-conscious budgeting app was born from a personal need to track both spending and environmental impact. Built with React Native, it features real-time expense categorization with carbon footprint calculations. The biggest challenge was creating an intuitive UI that made sustainability feel accessible, not preachy. After 3 months of user testing, we achieved a 40% increase in user engagement.',
-    categories: ['React', 'Figma/Design'],
-    titleColor: 'text-cyan-300',
-    gradientFrom: 'from-pink-400',
-    gradientTo: 'to-purple-600',
-    icon: 'smartphone',
-    variant: 'phone',
+    title: 'DASHBOARD APP',
+    description: 'A custom-coded dashboard application built with MeteorJS, NodeJS, and MongoDB—my first deep dive into full-stack JavaScript.\n\nThis project opened the door to modern JS development and ultimately sparked my love for JavaScript tech stacks.',
+    story: 'This dashboard app is where everything changed for me. Back in 2012, it was my first fully custom-coded application using MeteorJS, NodeJS, and MongoDB—a tech stack I had never touched before. I had to learn everything from scratch, from how Meteor handles data reactivity to how MongoDB structures collections. It was challenging, occasionally confusing, and absolutely thrilling.\n\nThis project didn’t just teach me new technologies—it introduced me to the mindset of modern development.\n- Thinking in components\n- Managing real-time data flows\n- Structuring APIs and backend logic\n- Understanding databases beyond simple CMS setups\n\nI built a functional dashboard with dynamic data, user interactions, and custom logic that made everything work smoothly. Every feature I coded felt like unlocking a new level in the game of development.\n\nBut the biggest impact?\nThis project made me fall in love with JavaScript. It pushed me to explore more modern stacks and eventually led me to React, which became a major part of my toolkit.\n\nKey Takeaways / Learnings:\n\n- Learned my first true full-stack JS framework (MeteorJS) from zero.\n- Gained confidence working with NodeJS environments and backend logic.\n- Built my first data-driven UI powered by MongoDB.\n- Discovered my passion for JavaScript, which shaped my development direction.\n- Developed the curiosity that eventually led me to React and other modern frameworks.\n\nThis dashboard app wasn’t just a project—it was the spark in 2012 that launched my journey into the world of JavaScript development.',
+    categories: ['Javascript', 'MeteorJS', 'NodeJS', 'MongoDB'],
+    titleColor: 'text-rose-300',
+    gradientFrom: 'from-rose-400',
+    gradientTo: 'to-pink-600',
+    icon: 'layers',
+    variant: 'monitor',
   },
   {
     id: 2,
-    title: 'GALACTIC CAFE WEBSITE',
-    description: 'Tocerber thlee dor aclodder ivadfrer sercolorpe iontais.',
-    story: 'A whimsical website for a space-themed coffee shop in downtown. The client wanted visitors to feel like they were ordering coffee on a spaceship. I incorporated parallax scrolling, floating coffee cups, and a reservation system that mimics a spaceship booking terminal. The site increased their online orders by 65%.',
-    categories: ['Wordpress', 'Figma/Design'],
+    title: 'GIFT-CAMPAIGN APP',
+    description: 'A joyful crowd-gifting app where you can create celebration campaigns, share a link with loved ones, and collect contributions toward your dream gift—while automatically giving a portion to the charity you choose.',
+    story: 'I had the chance to help create a fun, feel-good crowd-gifting app, and it turned into an incredibly enjoyable and educational experience. \n\nBuilt under WordPress but custom coded using PHP and JavaScript, the project gave me plenty of room to dive into hands-on development. \n\nThe app allows users to set up celebration campaigns, share a unique link with friends and family, and collect contributions toward a gift fund. That fund is then split between a gift the recipient truly wants and a donation to a charity of their choice. Being part of building something that makes celebrations more meaningful—while also encouraging people to give back—was both rewarding and genuinely fun. \n\nI learned a lot throughout the process and loved bringing this joyful idea to life.',
+    categories: ['Wordpress', 'PHP', "Javascript"],
+    titleColor: 'text-cyan-300',
+    gradientFrom: 'from-pink-400',
+    gradientTo: 'to-purple-600',
+    icon: 'monitor',
+    variant: 'phone',
+  },
+  {
+    id: 3,
+    title: 'INVESTMENT WEBSITE',
+    description: 'A suite of custom-built investment websites powered by WordPress, PHP, and a whole lot of clever coding. Each site was tailored to unique client needs—from dynamic dashboards to custom financial tools—making complex investment info feel smooth, secure, and user-friendly.',
+    story: 'Building investment websites is like solving a financial puzzle… with WordPress, PHP, and a sprinkle of custom code magic.\n\nEach project under this category came with its own personality and set of challenges—no two clients wanted the same thing, and no template could keep up. \n\nMy role was part developer, part architect, part “translator of complicated client ideas into actual working features.”\nI handled everything from structuring secure data flows to crafting custom modules that WordPress could only dream of doing out of the box.\nWhether it was integrating investment calculators, designing intuitive dashboards, or making sure everything ran smooth as butter, I made sure each site delivered both performance and polish.\n\nKey Takeaways / Learnings:\n\n- Learned how to push WordPress far beyond traditional theme-and-plugin territory.\n- Sharpened my PHP and custom-coding skills by building features tailor-made for financial workflows.\n- Gained a deeper understanding of how clients think about investments—and how to translate that into UX that makes sense.\n- Mastered the art of keeping websites secure and stable in industries where uptime and trust are everything.In short, each project was a new challenge, a new puzzle, and a new win — all contributing to a portfolio of clean, capable, high-trust investment platforms.',
+    categories: ['Wordpress', 'PHP', 'Figma/Design'],
     titleColor: 'text-white',
     gradientFrom: 'from-purple-500',
     gradientTo: 'to-indigo-700',
@@ -44,23 +55,23 @@ const projects: Project[] = [
     variant: 'monitor',
   },
   {
-    id: 3,
-    title: 'CALCATIC',
-    subtitle: 'POSTERS',
-    description: 'Tieresleer tnesis toastrack eriblam pandos.',
-    story: 'A series of minimalist posters celebrating the beauty of mathematics and cosmic patterns. Each poster visualizes a different mathematical concept—from the Fibonacci sequence to fractal geometry. Created entirely in Figma with custom gradients and geometric shapes. The collection was featured in a local art gallery exhibition.',
-    categories: ['Figma/Design'],
+    id: 4,
+    title: 'FINANCIAL WEBSITE',
+    subtitle: 'Webdesign, Posters, Digital Products',
+    description: 'A collection of custom-built financial websites crafted with WordPress, PHP, and polished digital assets designed in Figma and Adobe.\n\nEach project came with its own unique requirements—from tailored financial tools to bespoke UI visuals—resulting in platforms that look sharp, run smoothly, and build trust at first glance.',
+    story: 'Building financial websites isn’t just about code—it’s about creating trust.\n\nAcross multiple projects in this category, I blended WordPress, PHP, and custom design work from Figma and Adobe to deliver platforms that felt secure, professional, and visually refined. Every site had its own personality and set of requirements, which pushed me to adapt quickly and build solutions that fit both the brand and the financial service behind it. \n\nI handled both the technical and creative sides:\n- Developing custom functionalities in PHP\n- Extending WordPress beyond its usual limits\n- Designing clean, modern UI elements\n- Producing digital assets that elevated the overall look and feel\n\nThis combination of dev + design allowed me to create experiences that weren’t just functional—they were intuitive, visually coherent, and built for real users making important financial decisions.\n\nKey Takeaways / Learnings:\n\n- Improved my ability to merge design and development into one seamless workflow.\n- Strengthened my understanding of UX for financial platforms.\n- Became more efficient in building custom WP features tailored to strict client requirements.\n- Gained hands-on experience designing consistent visual systems using both Figma and Adobe tools.\n\nEach project was a chance to refine the balance between logic and aesthetics—ultimately creating financial websites that look as trustworthy as they function.',
+    categories: ['Wordpress', 'PHP', 'Figma/Design'],
     titleColor: 'text-white',
     gradientFrom: 'from-indigo-500',
     gradientTo: 'to-purple-700',
     icon: 'palette',
-    variant: 'minimal',
+    variant: 'phone',
   },
   {
-    id: 4,
+    id: 5,
     title: 'DASHBOARD REDESIGN',
-    description: 'Reimagining data visualization for clarity.',
-    story: 'Tasked with reimagining a cluttered analytics dashboard used by over 10,000 daily users. The original design had 47 different metrics on one screen. Through extensive user research, I identified the 8 most critical metrics and designed a modular system where users could customize their view. Post-launch surveys showed 89% user satisfaction.',
+    description: 'A modern dashboard redesign built with React and crafted visually in Figma.\n\nThe result? A cleaner, faster, and more intuitive user experience that turns complex data into something users actually want to explore.',
+    story: 'Redesigning a dashboard is like renovating a house while people still live in it—you can’t break anything, but everything still needs to feel brand new.\n\nFor this project, I combined the power of React with the visual clarity of Figma to transform an outdated interface into a smooth, modern, and user-friendly dashboard. The goal was simple: make complex information feel lightweight and easy to navigate.\n\nMy workflow went from pixels to components:\n- Using Figma to map out cleaner layouts, more intuitive navigation, and visual hierarchy that actually guides users\n- Translating those designs into React components that are reusable, modular, and fast\n- Improving data visualization with clearer structures and improved interaction patterns\n- Ensuring the final experience felt consistent, responsive, and delightful to use\n\nThis redesign wasn’t just a facelift—it was a full UX upgrade aimed at improving daily workflows and reducing user friction.\n\nKey Takeaways / Learnings:\n\n- Got better at turning Figma designs into flexible, component-based React architecture.\n- Learned how small UI changes can dramatically improve usability.\n- Strengthened my ability to collaborate between design and development disciplines.\n- Enhanced my skill in transforming cluttered information into clear, digestible visuals.\n\nIn the end, the dashboard became something users could rely on—not just for data, but for a smooth and enjoyable experience.',
     categories: ['React', 'Figma/Design'],
     titleColor: 'text-orange-300',
     gradientFrom: 'from-orange-400',
@@ -69,11 +80,11 @@ const projects: Project[] = [
     variant: 'phone',
   },
   {
-    id: 5,
-    title: 'HEALTH TRACKER',
-    description: 'Wellness monitoring made simple.',
-    story: 'A comprehensive health tracking app that connects with wearable devices. The unique challenge was presenting complex health data in a way that motivates rather than overwhelms users. I designed a "health score" system with gentle animations and encouraging micro-interactions. The app now has over 50,000 active users.',
-    categories: ['React'],
+    id: 6,
+    title: 'HEALTH WELLNESS WEBSITE',
+    description: 'A clean and refreshing health & wellness landing page built with pure HTML, CSS, and JavaScript.\n\nLightweight, fast, and designed to give users that “ahhh” feeling the moment they land on the site.',
+    story: 'Sometimes, the simplest tools deliver the most satisfying results.\n\nThis health and wellness landing page was crafted entirely with plain HTML, CSS, and JavaScript—no heavy frameworks, no complicated build tools, just clean front-end craftsmanship. The goal was to create a calming, inviting experience that reflected the client’s focus on wellness, balance, and holistic living.\n\nI focused heavily on the essentials:\n- Writing clean, semantic HTML for accessibility and SEO\n- Designing a refreshing, wellness-inspired layout using CSS\n- Adding gentle JS interactions to make the page feel alive without overwhelming the user\n- Ensuring the landing page stayed lightweight for fast load times\n\nWith no backend or extra tools in the mix, every detail—from spacing to animation timing—had to be deliberate and thoughtful.\n\nKey Takeaways / Learnings:\n\n- Strengthened my fundamentals by working purely with vanilla HTML/CSS/JS.\n- Gained a deeper appreciation for performance-first design.\n- Improved my ability to convey brand feeling through color, spacing, and typography.\n- Learned how subtle animations can set the tone for an entire user experience.\n\nA simple tech stack, but a polished and serene landing page that captures what wellness is all about.',
+    categories: ['HTML/CSS/JS'],
     titleColor: 'text-emerald-300',
     gradientFrom: 'from-emerald-400',
     gradientTo: 'to-teal-600',
@@ -81,11 +92,11 @@ const projects: Project[] = [
     variant: 'phone',
   },
   {
-    id: 6,
-    title: 'VINTAGE BOUTIQUE',
-    description: 'E-commerce store with retro aesthetics.',
-    story: 'An e-commerce platform for a vintage clothing store that wanted to feel like stepping into a 1970s boutique. Built on Shopify with heavy customization, featuring sepia-toned product photography, retro typography, and a unique "vinyl record" style product carousel. The store saw a 120% increase in average session duration.',
-    categories: ['Shopify', 'Figma/Design'],
+    id: 7,
+    title: 'COLLEGE ATHLETE RECRUITING WEBSITE',
+    description: 'A custom WordPress-powered recruiting platform designed like a social media hub for college athletes.\n\nBuilt with a fully custom plugin and a tailor-made UI, this site helps athletes showcase their skills while giving recruiters an easy, engaging way to discover new talent.',
+    story: 'This project was a fun mix of creativity, strategy, and custom engineering.\n\nThe goal was to build a college athlete recruiting website that felt as familiar as a social media profile—but with features specifically designed for athletic recruitment. Using WordPress as the backbone, I developed a fully custom plugin and designed the entire interface to create a smooth, modern, and highly interactive experience.\n\nI handled everything end-to-end:\n- Designing athlete profile layouts with a social-media-style vibe\n- Building a custom plugin to manage profiles, stats, highlights, and recruitable details\n- Creating search and filtering tools to help recruiters find the right athletes quickly\n- Ensuring the UI looked bold, energetic, and sports-driven\n- Writing custom WordPress logic to handle data, feeds, and dynamic content\n\nThe biggest challenge—and the most rewarding part—was blending social features with a serious recruitment workflow. It had to look fun for athletes and feel powerful for recruiters.\n\nKey Takeaways / Learnings:\n\n- Learned how to architect complex WP plugins that go far beyond typical CMS use cases.\n- Improved my ability to design user profiles that are both visually appealing and data-rich.\n- Gained a deeper understanding of how recruiters evaluate athletes, and how UX can streamline that process.\n- Mastered the balance between “social media style” design and professional-level functionality.\n\nThe final product was fast, engaging, and incredibly practical—a platform athletes could proudly showcase, and recruiters could rely on.',
+    categories: ['WOrdpress', 'PHP', 'Figma/Design'],
     titleColor: 'text-amber-300',
     gradientFrom: 'from-amber-400',
     gradientTo: 'to-orange-600',
@@ -93,11 +104,11 @@ const projects: Project[] = [
     variant: 'phone',
   },
   {
-    id: 7,
-    title: 'REAL ESTATE CMS',
-    description: 'Property management made effortless.',
-    story: 'A custom content management system for a real estate agency managing 500+ properties. Built with PHP and Laravel, featuring automated listing syndication, virtual tour integration, and a client portal. The biggest win was reducing property upload time from 45 minutes to just 5 minutes per listing.',
-    categories: ['PHP', 'Wordpress'],
+    id: 8,
+    title: 'ECOMMERCE STORE',
+    description: 'A collection of custom-built eCommerce websites powered by either Shopify or WordPress—highlighted by a standout project where I integrated a full Shopify store directly into a WP ecosystem.\n\nThe result: seamless product syncing, smooth checkout flows, and an online shopping experience that feels unified from end to end.',
+    story: 'Working on multiple eCommerce websites gave me the perfect playground to mix creativity with technical problem-solving.\n\nAcross these projects, I built custom online stores on WordPress—handling layouts, product displays, checkout flows, and performance tuning. But the most memorable challenge came from a unique requirement: connecting a WordPress site with a Shopify store and making it feel like one cohesive platform.\n\nThis wasn’t a simple “embed a buy button” task.\nIt required architecting a smooth bridge between two entirely different systems while keeping the user experience consistent and intuitive.\n\nHere’s what I handled:\n- Designing and building the WordPress front-end for product catalogs\n- Integrating Shopify’s backend for real checkout and inventory management\n- Custom-coding sync logic to keep product data updated\n- Ensuring the design remained unified across both systems\n- Optimizing for speed so pages loaded quickly despite pulling data from different platforms\n\nThe end result was an eCommerce experience where users couldn’t tell which parts were WordPress and which were Shopify—they just saw a fast, polished store.\n\nKey Takeaways / Learnings:\n\n- Learned how to merge WordPress and Shopify workflows without breaking UX consistency.\n- Improved my ability to create flexible product modules that adapt to external data sources.\n- Developed a deeper understanding of cross-platform eCommerce architectures.\n- Strengthened my skills in debugging API interactions and optimizing performance across multiple systems.\n\nThis project taught me that eCommerce doesn’t have to stick to one platform—sometimes the best solution is a clever fusion of both.',
+    categories: ['Wordpress', 'Shopify', 'PHP'],
     titleColor: 'text-blue-300',
     gradientFrom: 'from-blue-400',
     gradientTo: 'to-indigo-600',
@@ -105,23 +116,11 @@ const projects: Project[] = [
     variant: 'monitor',
   },
   {
-    id: 8,
-    title: 'BRAND IDENTITY',
-    description: 'Complete visual identity system design.',
-    story: 'A comprehensive brand identity project for a tech startup entering the sustainable energy market. Developed the logo, color palette, typography system, and 60-page brand guidelines. The identity needed to convey innovation while remaining approachable. The final design was selected from 15 initial concepts after 8 rounds of refinement.',
-    categories: ['Figma/Design'],
-    titleColor: 'text-rose-300',
-    gradientFrom: 'from-rose-400',
-    gradientTo: 'to-pink-600',
-    icon: 'pentool',
-    variant: 'minimal',
-  },
-  {
     id: 9,
-    title: 'BLOG THEME',
-    description: 'Minimalist theme for content creators.',
-    story: 'A WordPress theme designed specifically for long-form content creators. Features include a distraction-free reading mode, estimated reading time, and beautiful typography optimized for readability. Built with accessibility in mind, achieving WCAG AA compliance. The theme has been downloaded over 5,000 times.',
-    categories: ['Wordpress', 'PHP'],
+    title: 'KINDERGARTEN WEBSITE',
+    description: 'A bright and playful kindergarten website built on Squarespace with custom content.\n\nDesigned to be engaging for parents and kids alike, while keeping management simple and smooth for staff.',
+    story: 'This kindergarten website was all about creating a cheerful, welcoming digital space that parents and children would enjoy visiting.\n\nBuilt on Squarespace, I focused on custom content and design elements to make the site feel unique and friendly. The challenge was balancing playful visuals with clear, accessible information for parents, while keeping the backend easy for staff to manage.\n\nI handled everything from content layout to visual customization:\n- Crafting a fun and colorful design that reflects the kindergarten’s personality\n- Organizing content so parents could quickly find schedules, programs, and enrollment info\n- Customizing Squarespace templates to match brand colors and imagery\n- Ensuring responsive design for both desktop and mobile visitors\n\nKey Takeaways / Learnings:\n\n- Learned how to stretch Squarespace beyond its default templates using custom content.\n- Improved my skills in translating brand personality into an engaging website.\n- Strengthened my ability to create a user-friendly experience for non-technical audiences.\n- Gained insight into balancing aesthetics with functionality on small-scale CMS platforms.\n\nThe final website was fun, vibrant, and easy to navigate—a digital reflection of the kindergarten itself.',
+    categories: ['Squarespace', 'HTML/CSS/JS'],
     titleColor: 'text-violet-300',
     gradientFrom: 'from-violet-400',
     gradientTo: 'to-purple-600',
@@ -142,94 +141,67 @@ const getIcon = (iconName: Project['icon'], size: number) => {
   }
 };
 
-interface BrandingItem {
-  id: number;
-  title: string;
-  subtitle?: string;
-  categories: string[];
-  gradientFrom: string;
-  gradientTo: string;
-  emoji?: string;
-  variant: 'emoji' | 'text' | 'face' | 'cosmic';
-}
+// Helper function to render formatted text with paragraphs, line breaks, and bullets
+const FormattedText: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
+  // Split by double newlines for paragraphs
+  const paragraphs = text.split(/\n\n+/);
 
-const brandingItems: BrandingItem[] = [
-  {
-    id: 1,
-    title: '',
-    categories: ['Illustrations'],
-    gradientFrom: 'from-orange-400',
-    gradientTo: 'to-pink-500',
-    emoji: '😊',
-    variant: 'emoji',
-  },
-  {
-    id: 2,
-    title: 'BACMILIS',
-    subtitle: 'AGAS',
-    categories: ['Branding', 'Logos'],
-    gradientFrom: 'from-pink-300',
-    gradientTo: 'to-purple-400',
-    variant: 'text',
-  },
-  {
-    id: 3,
-    title: '',
-    categories: ['Illustrations'],
-    gradientFrom: 'from-indigo-500',
-    gradientTo: 'to-indigo-500',
-    variant: 'face',
-  },
-  {
-    id: 4,
-    title: 'AURORA',
-    subtitle: 'LOGOS',
-    categories: ['Logos', 'Branding'],
-    gradientFrom: 'from-cyan-400',
-    gradientTo: 'to-blue-600',
-    variant: 'text',
-  },
-  {
-    id: 5,
-    title: 'COSMIC',
-    categories: ['Typography', 'Illustrations'],
-    gradientFrom: 'from-purple-900',
-    gradientTo: 'to-purple-900',
-    variant: 'cosmic',
-  },
-  {
-    id: 6,
-    title: 'STARTER',
-    subtitle: 'KIT',
-    categories: ['Web Design & Prototypes', 'Branding'],
-    gradientFrom: 'from-emerald-400',
-    gradientTo: 'to-teal-600',
-    variant: 'text',
-  },
-  {
-    id: 7,
-    title: 'NEXUS',
-    categories: ['Logos'],
-    gradientFrom: 'from-rose-400',
-    gradientTo: 'to-red-600',
-    variant: 'text',
-  },
-  {
-    id: 8,
-    title: '',
-    categories: ['Illustrations', 'Typography'],
-    gradientFrom: 'from-yellow-400',
-    gradientTo: 'to-amber-500',
-    emoji: '🎨',
-    variant: 'emoji',
-  },
-];
+  return (
+    <div className={className}>
+      {paragraphs.map((paragraph, pIndex) => {
+        // Check if paragraph contains bullet points (lines starting with - or *)
+        const lines = paragraph.split('\n');
+        const hasBullets = lines.some(line => /^[\-\*•]\s/.test(line.trim()));
+
+        if (hasBullets) {
+          // Render as a list
+          const listItems: string[] = [];
+          let currentItem = '';
+
+          lines.forEach(line => {
+            const trimmed = line.trim();
+            if (/^[\-\*•]\s/.test(trimmed)) {
+              if (currentItem) listItems.push(currentItem);
+              currentItem = trimmed.replace(/^[\-\*•]\s+/, '');
+            } else if (currentItem) {
+              currentItem += ' ' + trimmed;
+            } else {
+              // Non-bullet line before bullets
+              listItems.push(trimmed);
+            }
+          });
+          if (currentItem) listItems.push(currentItem);
+
+          return (
+            <ul key={pIndex} className="list-disc list-inside space-y-1 mb-4">
+              {listItems.map((item, iIndex) => (
+                <li key={iIndex}>{item}</li>
+              ))}
+            </ul>
+          );
+        } else {
+          // Render as paragraph with line breaks
+          const parts = paragraph.split(/\n|<br\s*\/?>/);
+          return (
+            <p key={pIndex} className="mb-4 last:mb-0">
+              {parts.map((part, partIndex) => (
+                <React.Fragment key={partIndex}>
+                  {part}
+                  {partIndex < parts.length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
+          );
+        }
+      })}
+    </div>
+  );
+};
 
 const WorkPage: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const [activeFilters, setActiveFilters] = useState<string[]>(['All']);
-  const [activeBrandingFilters, setActiveBrandingFilters] = useState<string[]>(['All']);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [expandedDescriptionId, setExpandedDescriptionId] = useState<number | null>(null);
 
   const toggleFilter = (filter: string) => {
     setActiveFilters(prev => {
@@ -243,35 +215,9 @@ const WorkPage: React.FC = () => {
     });
   };
 
-  const toggleBrandingFilter = (filter: string) => {
-    setActiveBrandingFilters(prev => {
-      if (filter === 'All') return ['All'];
-      const withoutAll = prev.filter(f => f !== 'All');
-      if (prev.includes(filter)) {
-        const newFilters = withoutAll.filter(f => f !== filter);
-        return newFilters.length === 0 ? ['All'] : newFilters;
-      }
-      return [...withoutAll, filter];
-    });
-  };
-
   const filteredProjects = activeFilters.includes('All')
     ? projects
     : projects.filter(project => project.categories.some(cat => activeFilters.includes(cat)));
-
-  const filteredBrandingItems = activeBrandingFilters.includes('All')
-    ? brandingItems
-    : brandingItems.filter(item => item.categories.some(cat => activeBrandingFilters.includes(cat)));
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 400;
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <div className="pt-28 pb-20 px-6 min-h-screen">
@@ -344,27 +290,11 @@ const WorkPage: React.FC = () => {
         {/* --- UI/UX PROJECTS SECTION --- */}
         <div className="mb-20">
           <div className="flex flex-col gap-4 mb-8">
-            <div className="flex justify-between items-center">
-              <div className="px-6 py-2 rounded-full bg-[#4ade80] border-2 border-green-300 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
-                <span className="text-black font-black text-sm tracking-wide">UI/UX PROJECTS</span>
-              </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => scroll('left')}
-                  className="w-10 h-10 rounded-full bg-[#1e293b] border border-white/10 flex items-center justify-center text-white hover:bg-[#4ade80] hover:text-black transition-all duration-300"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                <button
-                  onClick={() => scroll('right')}
-                  className="w-10 h-10 rounded-full bg-[#1e293b] border border-white/10 flex items-center justify-center text-white hover:bg-[#4ade80] hover:text-black transition-all duration-300"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
+            <div className="px-6 py-2 rounded-full bg-[#4ade80] border-2 border-green-300 shadow-[0_0_15px_rgba(74,222,128,0.4)] inline-block self-start">
+              <span className="text-black font-black text-sm tracking-wide">UI/UX PROJECTS</span>
             </div>
             {/* Filter Pills - Segmented Control with Glass & Neon */}
-            <div className="inline-flex rounded-full bg-white/5 backdrop-blur-md border border-white/10 p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+            <div className="inline-flex flex-wrap rounded-full bg-white/5 backdrop-blur-md border border-white/10 p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.3)] self-start">
               {filters.map((filter) => (
                 <button
                   key={filter}
@@ -381,58 +311,95 @@ const WorkPage: React.FC = () => {
             </div>
           </div>
 
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 scroll-smooth"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => setSelectedProject(project)}
-                className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 min-w-[350px] flex-shrink-0 cursor-pointer"
-              >
-                <div className="p-8 pb-32 relative z-10">
-                  <div className="flex gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-pink-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+              <div key={project.id} className="relative">
+                {/* Card */}
+                <div
+                  onClick={() => setSelectedProject(project)}
+                  className="group relative rounded-[2rem] bg-[#1e1b4b] overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 h-[320px] cursor-pointer"
+                >
+                  <div className="p-6 relative z-10 h-[200px] flex flex-col">
+                    <div className="flex gap-2 mb-3 flex-shrink-0">
+                      <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-pink-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      {project.subtitle ? (
+                        <>
+                          <h3 className={`text-lg font-bold ${project.titleColor} leading-tight truncate`}>{project.title}</h3>
+                          <h3 className="text-sm font-medium text-yellow-500 leading-tight line-clamp-1">{project.subtitle}</h3>
+                        </>
+                      ) : (
+                        <h3 className={`text-xl font-bold ${project.titleColor} leading-tight line-clamp-2`}>{project.title}</h3>
+                      )}
+                    </div>
+                    <div className="mt-2 flex-shrink-0">
+                      <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">{project.description}</p>
+                      {project.description.length > 100 && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setExpandedDescriptionId(expandedDescriptionId === project.id ? null : project.id);
+                          }}
+                          className="text-cyan-400 text-xs mt-1 hover:text-cyan-300 transition-colors text-left block"
+                        >
+                          {expandedDescriptionId === project.id ? 'Show less' : 'Read more...'}
+                        </button>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-1 mt-auto flex-shrink-0">
+                      {project.categories.map((cat) => (
+                        <span key={cat} className="inline-block px-3 py-1 rounded-full bg-white/10 text-[10px] text-gray-300 font-medium">
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  {project.subtitle ? (
+
+                  {project.variant === 'monitor' ? (
                     <>
-                      <h3 className={`text-xl font-bold ${project.titleColor} mb-1`}>{project.title}</h3>
-                      <h3 className="text-xl font-bold text-cyan-400 mb-2">{project.subtitle}</h3>
+                      <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[#3b0764]/50"></div>
+                      <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-48 h-40 bg-[#312e81] rounded-t-3xl border-t-4 border-l-4 border-r-4 border-[#4338ca] group-hover:translate-y-[-10px] transition-transform duration-500 flex items-center justify-center">
+                        <div className="w-12 h-12 bg-pink-500 rounded-full blur-md absolute top-4 left-4"></div>
+                        {getIcon(project.icon, 64)}
+                      </div>
+                    </>
+                  ) : project.variant === 'minimal' ? (
+                    <>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.gradientFrom} ${project.gradientTo} opacity-20 -z-10`}></div>
+                      <div className="absolute bottom-4 right-4 w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                        {getIcon(project.icon, 28)}
+                      </div>
                     </>
                   ) : (
-                    <h3 className={`text-2xl font-bold ${project.titleColor} mb-2`}>{project.title}</h3>
+                    <>
+                      <div className={`absolute bottom-0 right-0 w-full h-48 bg-gradient-to-t ${project.gradientFrom}/20 to-transparent`}></div>
+                      <div className={`absolute bottom-[-20px] right-[-20px] w-40 h-56 bg-gradient-to-br ${project.gradientFrom} ${project.gradientTo} rounded-3xl transform -rotate-12 group-hover:-rotate-6 transition-transform duration-500 shadow-2xl flex items-center justify-center border-4 border-[#1e1b4b]`}>
+                        {getIcon(project.icon, 48)}
+                      </div>
+                    </>
                   )}
-                  <p className="text-gray-400 text-xs leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-1 mt-3">
-                    {project.categories.map((cat) => (
-                      <span key={cat} className="inline-block px-3 py-1 rounded-full bg-white/10 text-[10px] text-gray-300 font-medium">
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
-                {project.variant === 'monitor' ? (
-                  <>
-                    <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[#3b0764]/50"></div>
-                    <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-48 h-40 bg-[#312e81] rounded-t-3xl border-t-4 border-l-4 border-r-4 border-[#4338ca] group-hover:translate-y-[-10px] transition-transform duration-500 flex items-center justify-center">
-                      <div className="w-12 h-12 bg-pink-500 rounded-full blur-md absolute top-4 left-4"></div>
-                      {getIcon(project.icon, 64)}
+                {/* Description Bubble - Below the card */}
+                {expandedDescriptionId === project.id && (
+                  <div
+                    className="absolute left-0 right-0 top-full mt-3 z-50"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="bg-[#312e81] border border-cyan-400/30 rounded-xl p-4 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                      <div className="absolute -top-2 left-6 w-4 h-4 bg-[#312e81] border-l border-t border-cyan-400/30 transform rotate-45"></div>
+                      <FormattedText text={project.description} className="text-gray-300 text-sm leading-relaxed relative z-10" />
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setExpandedDescriptionId(null); }}
+                        className="text-cyan-400 text-xs mt-3 hover:text-cyan-300 transition-colors font-medium"
+                      >
+                        Close
+                      </button>
                     </div>
-                  </>
-                ) : project.variant === 'minimal' ? (
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradientFrom} ${project.gradientTo} opacity-20 -z-10`}></div>
-                ) : (
-                  <>
-                    <div className={`absolute bottom-0 right-0 w-full h-48 bg-gradient-to-t ${project.gradientFrom}/20 to-transparent`}></div>
-                    <div className={`absolute bottom-[-20px] right-[-20px] w-40 h-56 bg-gradient-to-br ${project.gradientFrom} ${project.gradientTo} rounded-3xl transform -rotate-12 group-hover:-rotate-6 transition-transform duration-500 shadow-2xl flex items-center justify-center border-4 border-[#1e1b4b]`}>
-                      {getIcon(project.icon, 48)}
-                    </div>
-                  </>
+                  </div>
                 )}
               </div>
             ))}
@@ -440,92 +407,6 @@ const WorkPage: React.FC = () => {
             {filteredProjects.length === 0 && (
               <div className="flex items-center justify-center w-full py-16 text-gray-500">
                 No projects found for this filter.
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* --- BRANDING & ART SECTION --- */}
-        <div className="mb-20">
-          <div className="flex flex-col gap-4 mb-8">
-            <div className="px-6 py-2 rounded-full bg-[#fb923c] border-2 border-orange-300 shadow-[0_0_15px_rgba(251,146,60,0.4)] inline-block self-start">
-              <span className="text-black font-black text-sm tracking-wide">BRANDING & ART</span>
-            </div>
-
-            {/* Filter Pills - Segmented Control with Glass & Neon */}
-            <div className="inline-flex flex-wrap rounded-full bg-white/5 backdrop-blur-md border border-white/10 p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.3)] self-start">
-              {brandingFilters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => toggleBrandingFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
-                    activeBrandingFilters.includes(filter)
-                      ? 'bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-400 border border-orange-400/50 shadow-[0_0_15px_rgba(251,146,60,0.5),inset_0_0_10px_rgba(251,146,60,0.1)]'
-                      : 'text-gray-400 border border-transparent hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {filteredBrandingItems.map((item) => (
-              <div
-                key={item.id}
-                className="aspect-square rounded-[2rem] bg-[#312e81] p-6 flex items-center justify-center relative overflow-hidden group hover:scale-105 transition-transform duration-300"
-              >
-                {item.variant === 'emoji' && (
-                  <div className={`absolute inset-4 bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} rounded-[1.5rem] flex items-center justify-center`}>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 backdrop-blur-sm flex items-center justify-center">
-                        <span className="text-2xl">{item.emoji}</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {item.variant === 'text' && (
-                  <div className={`absolute inset-4 bg-gradient-to-tr ${item.gradientFrom} ${item.gradientTo} rounded-[1.5rem] overflow-hidden`}>
-                    <div className="w-full h-full flex flex-col items-center justify-center">
-                      <h4 className="font-black text-white text-lg leading-none">{item.title}</h4>
-                      {item.subtitle && <h4 className="font-black text-white text-lg leading-none">{item.subtitle}</h4>}
-                    </div>
-                    <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/swirl.png')] opacity-20"></div>
-                  </div>
-                )}
-
-                {item.variant === 'face' && (
-                  <div className={`absolute inset-4 bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} rounded-[1.5rem] flex items-center justify-center overflow-hidden`}>
-                    <div className="w-24 h-24 bg-orange-300 rounded-full relative">
-                      <div className="absolute top-6 left-4 w-4 h-4 bg-black rounded-full"></div>
-                      <div className="absolute top-8 right-6 w-12 h-6 bg-black rounded-b-full"></div>
-                    </div>
-                  </div>
-                )}
-
-                {item.variant === 'cosmic' && (
-                  <div className={`absolute inset-4 ${item.gradientFrom === item.gradientTo ? 'bg-purple-900' : `bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo}`} rounded-[1.5rem] flex items-center justify-center overflow-hidden border border-white/10`}>
-                    <h4 className="font-black text-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500 opacity-80 rotate-12">{item.title}</h4>
-                    <div className="absolute bottom-2 text-xs font-bold text-white/50 uppercase tracking-widest">{item.categories[0]}</div>
-                  </div>
-                )}
-
-                {/* Category badges */}
-                <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end z-10">
-                  {item.categories.map((cat) => (
-                    <span key={cat} className="px-2 py-1 rounded-full bg-black/30 backdrop-blur-sm text-[10px] text-white/70 font-medium">
-                      {cat}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            {filteredBrandingItems.length === 0 && (
-              <div className="col-span-full flex items-center justify-center py-16 text-gray-500">
-                No items found for this filter.
               </div>
             )}
           </div>
@@ -589,14 +470,14 @@ const WorkPage: React.FC = () => {
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="relative max-w-2xl w-full bg-[#1e1b4b] rounded-[2rem] border border-white/10 overflow-hidden"
+            className="relative max-w-2xl w-full max-h-[90vh] bg-[#1e1b4b] rounded-[2rem] border border-white/10 overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with gradient */}
-            <div className={`h-32 bg-gradient-to-br ${selectedProject.gradientFrom} ${selectedProject.gradientTo} relative`}>
+            <div className={`flex-shrink-0 h-32 bg-gradient-to-br ${selectedProject.gradientFrom} ${selectedProject.gradientTo} relative`}>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-colors"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-colors z-10"
               >
                 <X className="text-white" size={20} />
               </button>
@@ -607,8 +488,8 @@ const WorkPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Content */}
-            <div className="p-8">
+            {/* Content - scrollable */}
+            <div className="p-8 overflow-y-auto flex-1">
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h2 className={`text-3xl font-bold ${selectedProject.titleColor} mb-1`}>
@@ -638,20 +519,18 @@ const WorkPage: React.FC = () => {
                   <Sparkles className="text-cyan-400" size={18} />
                   The Story
                 </h4>
-                <p className="text-gray-300 leading-relaxed">
-                  {selectedProject.story}
-                </p>
+                <FormattedText text={selectedProject.story} className="text-gray-300 leading-relaxed" />
               </div>
+            </div>
 
-              {/* Footer */}
-              <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity"
-                >
-                  Close
-                </button>
-              </div>
+            {/* Footer - fixed at bottom */}
+            <div className="flex-shrink-0 px-8 py-6 border-t border-white/10 flex justify-end bg-[#1e1b4b]">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
