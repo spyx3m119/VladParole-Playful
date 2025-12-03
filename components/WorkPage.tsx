@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, Monitor, Palette, Gamepad2, MousePointer2, Sparkles, PenTool, Layers, Wand2, X } from 'lucide-react';
+import { Smartphone, Monitor, Palette, Sparkles, PenTool, Layers, Wand2, X, ExternalLink } from 'lucide-react';
 
 const filters = ['All', 'React', 'PHP', 'Shopify', 'Wordpress', 'Figma/Design', 'HTML/CSS/JS'];
 
@@ -16,6 +16,75 @@ interface Project {
   icon: 'smartphone' | 'monitor' | 'layers' | 'sparkles' | 'palette' | 'pentool';
   variant: 'phone' | 'monitor' | 'minimal';
 }
+
+interface PersonalTool {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  story: string;
+  categories: string[];
+  url?: string;
+  titleColor: string;
+  gradientFrom: string;
+  gradientTo: string;
+  icon: 'layers' | 'sparkles' | 'pentool';
+}
+
+const personalTools: PersonalTool[] = [
+  {
+    id: 'shopify-app',
+    title: 'SHOPIFY APP',
+    subtitle: 'E-commerce Enhancement Tool',
+    description: 'Custom Shopify application for enhanced store functionality.',
+    story: 'This Shopify app was born out of a need to extend the platform beyond its default capabilities.\n\nI built custom features that help store owners:\n- Automate repetitive tasks\n- Enhance customer experience\n- Integrate with third-party services\n- Manage inventory more efficiently\n\nThe app leverages Shopify\'s API and modern web technologies to deliver a seamless experience.',
+    categories: ['Shopify', 'React', 'Node.js'],
+    url: '',
+    titleColor: 'text-green-300',
+    gradientFrom: 'from-green-400',
+    gradientTo: 'to-emerald-600',
+    icon: 'layers',
+  },
+  {
+    id: 'shorts-creator',
+    title: 'SHORTS CREATOR',
+    subtitle: 'Automated Video Production',
+    description: 'Automated short-form video creation tool.',
+    story: 'The Shorts Creator is a passion project designed to streamline short-form video production.\n\nKey features include:\n- Automated video editing workflows\n- Template-based content creation\n- AI-assisted caption generation\n- Multi-platform export optimization\n\nThis tool helps content creators save hours of manual editing while maintaining creative control over their output.',
+    categories: ['Python', 'FFmpeg', 'AI/ML'],
+    url: '',
+    titleColor: 'text-red-300',
+    gradientFrom: 'from-red-500',
+    gradientTo: 'to-rose-600',
+    icon: 'sparkles',
+  },
+  {
+    id: 'web-design-prototyper',
+    title: 'WEB DESIGN PROTOTYPER',
+    subtitle: 'Rapid Design Tool',
+    description: 'Rapid prototyping tool for web design concepts.',
+    story: 'The Web Design Prototyper is a tool I built to speed up my design-to-development workflow.\n\nIt allows me to:\n- Quickly sketch out layout ideas\n- Generate responsive grid systems\n- Preview designs across device sizes\n- Export clean, usable CSS\n\nWhat started as a personal utility has grown into a powerful prototyping companion that bridges the gap between design and code.',
+    categories: ['React', 'TypeScript', 'CSS'],
+    url: '',
+    titleColor: 'text-cyan-300',
+    gradientFrom: 'from-cyan-400',
+    gradientTo: 'to-blue-600',
+    icon: 'pentool',
+  },
+  {
+    id: 'yt-thumbnail-generator',
+    title: 'YT THUMBNAIL GENERATOR',
+    subtitle: 'YouTube Thumbnail Creator',
+    description: 'AI-powered thumbnail generation for YouTube videos.',
+    story: 'The YT Thumbnail Generator was created to solve a common content creator pain point—making eye-catching thumbnails quickly.\n\nKey features include:\n- AI-powered image enhancement\n- Template library for quick designs\n- Text overlay with smart positioning\n- Face detection for optimal cropping\n- One-click export in YouTube-optimized dimensions\n\nThis tool helps creators focus on content while still maintaining professional-looking thumbnails that drive clicks.',
+    categories: ['Python', 'AI/ML', 'React'],
+    url: '',
+    titleColor: 'text-orange-300',
+    gradientFrom: 'from-orange-500',
+    gradientTo: 'to-amber-600',
+    icon: 'sparkles',
+  },
+];
 
 const projects: Project[] = [
   {
@@ -202,6 +271,7 @@ const WorkPage: React.FC = () => {
   const [activeFilters, setActiveFilters] = useState<string[]>(['All']);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [expandedDescriptionId, setExpandedDescriptionId] = useState<number | null>(null);
+  const [selectedTool, setSelectedTool] = useState<PersonalTool | null>(null);
 
   const toggleFilter = (filter: string) => {
     setActiveFilters(prev => {
@@ -419,45 +489,120 @@ const WorkPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Interactive 1 */}
-            <div className="h-[400px] rounded-[2.5rem] bg-[#1e1b4b] relative overflow-hidden group border border-white/5 hover:border-purple-500/50 transition-colors">
-               {/* Background Scene */}
-               <div className="absolute inset-0 bg-gradient-to-b from-indigo-900 to-black"></div>
-               {/* Elements */}
-               <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400 rounded-full blur-xl opacity-20"></div>
-               <div className="absolute bottom-32 left-1/2 -translate-x-1/2 w-40 h-40 bg-purple-500 rounded-full blur-2xl opacity-20"></div>
-               
-               <div className="absolute bottom-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
-                  <h3 className="text-2xl font-bold text-white mb-2">PUFFY PLANET GAME</h3>
-                  <p className="text-gray-400 text-xs mb-4">Keeolber fiem dvore t broet tor diepns.</p>
-                  <Gamepad2 className="text-purple-400" />
-               </div>
-               
-               {/* Playful Characters */}
-               <div className="absolute top-1/3 left-1/2 -translate-x-1/2 flex gap-4 animate-float-slow">
-                  <div className="w-12 h-16 bg-pink-500 rounded-t-full rounded-b-lg"></div>
-                  <div className="w-16 h-12 bg-cyan-400 rounded-full"></div>
-               </div>
-            </div>
+            {personalTools.map((tool) => (
+              <div
+                key={tool.id}
+                className={`h-[400px] rounded-[2.5rem] bg-[#1e1b4b] relative overflow-hidden group border border-white/5 hover:border-opacity-50 transition-colors cursor-pointer ${
+                  tool.id === 'shopify-app' ? 'hover:border-green-500/50' :
+                  tool.id === 'shorts-creator' ? 'hover:border-red-500/50' :
+                  tool.id === 'yt-thumbnail-generator' ? 'hover:border-orange-500/50' :
+                  'hover:border-cyan-500/50'
+                }`}
+                onClick={() => tool.url ? window.open(tool.url, '_blank') : setSelectedTool(tool)}
+              >
+                {/* Background gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${
+                  tool.id === 'shopify-app' ? 'from-green-900 via-emerald-900 to-teal-900' :
+                  tool.id === 'shorts-creator' ? 'from-red-900 via-rose-900 to-pink-900' :
+                  tool.id === 'yt-thumbnail-generator' ? 'from-orange-900 via-amber-900 to-yellow-900' :
+                  'from-cyan-900 via-blue-900 to-indigo-900'
+                }`}></div>
 
-            {/* Interactive 2 */}
-            <div className="h-[400px] rounded-[2.5rem] bg-[#1e1b4b] relative overflow-hidden group border border-white/5 hover:border-pink-500/50 transition-colors">
-               <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
-               
-               <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="grid grid-cols-4 gap-2 opacity-50">
-                     {[...Array(16)].map((_, i) => (
-                        <div key={i} className={`w-8 h-8 rounded-full ${i % 2 === 0 ? 'bg-cyan-400' : 'bg-pink-500'} animate-pulse`} style={{animationDelay: `${i * 0.1}s`}}></div>
-                     ))}
-                  </div>
-               </div>
+                {/* Center icon/graphic */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {tool.id === 'shopify-app' && (
+                    <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl animate-float">
+                      <div className="w-16 h-16 border-4 border-white rounded-lg relative">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-6 border-4 border-white border-b-0 rounded-t-full"></div>
+                      </div>
+                    </div>
+                  )}
+                  {tool.id === 'shorts-creator' && (
+                    <div className="w-28 h-28 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                      <div className="w-0 h-0 border-t-[20px] border-t-transparent border-l-[35px] border-l-white border-b-[20px] border-b-transparent ml-2"></div>
+                    </div>
+                  )}
+                  {tool.id === 'web-design-prototyper' && (
+                    <div className="w-48 h-32 bg-white/10 rounded-xl border border-white/20 overflow-hidden animate-float-delayed">
+                      <div className="h-6 bg-white/10 flex items-center px-2 gap-1">
+                        <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                      </div>
+                      <div className="p-2 space-y-2">
+                        <div className="h-3 bg-cyan-400/30 rounded w-3/4"></div>
+                        <div className="h-2 bg-white/20 rounded w-full"></div>
+                        <div className="h-2 bg-white/20 rounded w-5/6"></div>
+                        <div className="flex gap-1 mt-2">
+                          <div className="h-8 bg-purple-400/30 rounded flex-1"></div>
+                          <div className="h-8 bg-pink-400/30 rounded flex-1"></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {tool.id === 'yt-thumbnail-generator' && (
+                    <div className="w-44 h-28 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl shadow-2xl animate-float relative overflow-hidden">
+                      {/* YouTube play button overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 h-8 bg-red-600 rounded-lg flex items-center justify-center">
+                          <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-1"></div>
+                        </div>
+                      </div>
+                      {/* Thumbnail preview lines */}
+                      <div className="absolute bottom-2 left-2 right-2 space-y-1">
+                        <div className="h-2 bg-white/30 rounded w-3/4"></div>
+                        <div className="h-1.5 bg-white/20 rounded w-1/2"></div>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-               <div className="absolute bottom-0 w-full p-8">
-                  <h3 className="text-2xl font-bold text-orange-300 mb-2">SOUND ORB</h3>
-                  <p className="text-gray-400 text-xs mb-4">Scontelt Kee srorlais poor dooo.</p>
-                  <MousePointer2 className="text-orange-400" />
-               </div>
-            </div>
+                {/* Decorative elements */}
+                {tool.id === 'shopify-app' && (
+                  <>
+                    <div className="absolute top-8 right-8 w-16 h-16 bg-green-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                    <div className="absolute bottom-32 left-8 w-20 h-20 bg-emerald-500 rounded-full blur-2xl opacity-20 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  </>
+                )}
+                {tool.id === 'shorts-creator' && (
+                  <>
+                    <div className="absolute top-12 left-8 w-8 h-24 bg-white/10 rounded flex flex-col justify-around py-1 animate-float-slow">
+                      {[...Array(4)].map((_, i) => (
+                        <div key={i} className="w-6 h-4 bg-red-400/30 mx-auto rounded-sm"></div>
+                      ))}
+                    </div>
+                    <div className="absolute top-20 right-12 w-8 h-24 bg-white/10 rounded flex flex-col justify-around py-1 animate-float-delayed">
+                      {[...Array(4)].map((_, i) => (
+                        <div key={i} className="w-6 h-4 bg-rose-400/30 mx-auto rounded-sm"></div>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {tool.id === 'web-design-prototyper' && (
+                  <>
+                    <div className="absolute top-8 left-8 w-12 h-12 bg-cyan-400 rounded-full blur-xl opacity-30 animate-ping" style={{animationDuration: '3s'}}></div>
+                    <div className="absolute top-16 right-16 w-16 h-16 bg-blue-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                  </>
+                )}
+                {tool.id === 'yt-thumbnail-generator' && (
+                  <>
+                    <div className="absolute top-8 right-8 w-16 h-16 bg-orange-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                    <div className="absolute top-12 left-8 w-12 h-12 bg-amber-500 rounded-full blur-2xl opacity-20 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+                    <div className="absolute bottom-36 right-12 w-10 h-10 bg-yellow-400 rounded-full blur-xl opacity-25 animate-ping" style={{animationDuration: '2s'}}></div>
+                  </>
+                )}
+
+                {/* Bottom content */}
+                <div className="absolute bottom-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
+                  <h3 className={`text-2xl font-bold ${tool.titleColor} mb-2`}>{tool.title}</h3>
+                  <p className="text-gray-400 text-xs mb-4">{tool.description}</p>
+                  {tool.icon === 'layers' && <Layers className="text-green-400 animate-bounce" />}
+                  {tool.icon === 'sparkles' && tool.id === 'shorts-creator' && <Sparkles className="text-red-400 animate-pulse" />}
+                  {tool.icon === 'sparkles' && tool.id === 'yt-thumbnail-generator' && <Sparkles className="text-orange-400 animate-pulse" />}
+                  {tool.icon === 'pentool' && <PenTool className="text-cyan-400 animate-bounce" />}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -527,6 +672,90 @@ const WorkPage: React.FC = () => {
             <div className="flex-shrink-0 px-8 py-6 border-t border-white/10 flex justify-end bg-[#1e1b4b]">
               <button
                 onClick={() => setSelectedProject(null)}
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Personal Tool Modal */}
+      {selectedTool && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+          onClick={() => setSelectedTool(null)}
+        >
+          <div
+            className="relative max-w-2xl w-full max-h-[90vh] bg-[#1e1b4b] rounded-[2rem] border border-white/10 overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header with gradient */}
+            <div className={`flex-shrink-0 h-32 bg-gradient-to-br ${selectedTool.gradientFrom} ${selectedTool.gradientTo} relative`}>
+              <button
+                onClick={() => setSelectedTool(null)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-colors z-10"
+              >
+                <X className="text-white" size={20} />
+              </button>
+              <div className="absolute bottom-4 left-6 flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
+                <div className="w-3 h-3 rounded-full bg-pink-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+              </div>
+            </div>
+
+            {/* Content - scrollable */}
+            <div className="p-8 overflow-y-auto flex-1">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h2 className={`text-3xl font-bold ${selectedTool.titleColor} mb-1`}>
+                    {selectedTool.title}
+                  </h2>
+                  <h3 className="text-xl font-bold text-cyan-400">{selectedTool.subtitle}</h3>
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center">
+                  {selectedTool.icon === 'layers' && <Layers className="text-white/80" size={32} />}
+                  {selectedTool.icon === 'sparkles' && <Sparkles className="text-white/80" size={32} />}
+                  {selectedTool.icon === 'pentool' && <PenTool className="text-white/80" size={32} />}
+                </div>
+              </div>
+
+              {/* Categories */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedTool.categories.map((cat) => (
+                  <span key={cat} className="px-4 py-1.5 rounded-full bg-white/10 text-sm text-gray-300 font-medium">
+                    {cat}
+                  </span>
+                ))}
+              </div>
+
+              {/* Story */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <Sparkles className="text-cyan-400" size={18} />
+                  About This Tool
+                </h4>
+                <FormattedText text={selectedTool.story} className="text-gray-300 leading-relaxed" />
+              </div>
+            </div>
+
+            {/* Footer - fixed at bottom */}
+            <div className="flex-shrink-0 px-8 py-6 border-t border-white/10 flex justify-end gap-4 bg-[#1e1b4b]">
+              {selectedTool.url && (
+                <a
+                  href={selectedTool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 rounded-full bg-white/10 text-white font-medium hover:bg-white/20 transition-colors flex items-center gap-2"
+                >
+                  <ExternalLink size={18} />
+                  Visit Website
+                </a>
+              )}
+              <button
+                onClick={() => setSelectedTool(null)}
                 className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium hover:opacity-90 transition-opacity"
               >
                 Close
