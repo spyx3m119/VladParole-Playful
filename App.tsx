@@ -11,31 +11,38 @@ import ContactModal from './components/ContactModal';
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'work' | 'about' | 'tools'>('home');
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [initialProjectId, setInitialProjectId] = useState<number | null>(null);
+
+  const handleViewProject = (projectId: number) => {
+    setInitialProjectId(projectId);
+    setCurrentView('work');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="min-h-screen relative bg-[#0f1014] text-white selection:bg-purple-500 selection:text-white">
-      
+
       {/* Modal */}
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Main Content */}
       <main className="relative z-10">
-        <Navbar 
-          onNavigate={setCurrentView} 
-          onOpenContact={() => setIsContactOpen(true)} 
+        <Navbar
+          onNavigate={setCurrentView}
+          onOpenContact={() => setIsContactOpen(true)}
         />
-        
+
         {currentView === 'home' && (
           <>
             <Hero onNavigate={setCurrentView} />
-            <Projects />
+            <Projects onViewProject={handleViewProject} />
             <Footer onOpenContact={() => setIsContactOpen(true)} />
           </>
         )}
 
         {currentView === 'work' && (
           <>
-            <WorkPage />
+            <WorkPage initialProjectId={initialProjectId} onProjectOpened={() => setInitialProjectId(null)} />
             <Footer onOpenContact={() => setIsContactOpen(true)} />
           </>
         )}

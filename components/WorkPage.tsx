@@ -267,11 +267,27 @@ const FormattedText: React.FC<{ text: string; className?: string }> = ({ text, c
   );
 };
 
-const WorkPage: React.FC = () => {
+interface WorkPageProps {
+  initialProjectId?: number | null;
+  onProjectOpened?: () => void;
+}
+
+const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }) => {
   const [activeFilters, setActiveFilters] = useState<string[]>(['All']);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [expandedDescriptionId, setExpandedDescriptionId] = useState<number | null>(null);
   const [selectedTool, setSelectedTool] = useState<PersonalTool | null>(null);
+
+  // Open project modal if initialProjectId is provided
+  React.useEffect(() => {
+    if (initialProjectId) {
+      const project = projects.find(p => p.id === initialProjectId);
+      if (project) {
+        setSelectedProject(project);
+        onProjectOpened?.();
+      }
+    }
+  }, [initialProjectId, onProjectOpened]);
 
   const toggleFilter = (filter: string) => {
     setActiveFilters(prev => {

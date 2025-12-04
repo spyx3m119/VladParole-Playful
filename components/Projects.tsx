@@ -1,58 +1,83 @@
 import React from 'react';
-import { MessageSquare, ArrowRight, Brain, Monitor } from 'lucide-react';
+import { MessageSquare, Sparkles, Layers } from 'lucide-react';
 
-const Projects: React.FC = () => {
+// Featured projects from the work page
+const featuredProjects = [
+  {
+    id: 1,
+    title: 'DASHBOARD APP',
+    description: 'A custom-coded dashboard application built with MeteorJS, NodeJS, and MongoDB—my first deep dive into full-stack JavaScript.',
+    categories: ['Javascript', 'MeteorJS', 'NodeJS'],
+    gradientFrom: 'from-rose-400',
+    gradientVia: 'via-pink-500',
+    gradientTo: 'to-purple-600',
+    hoverShadow: 'hover:shadow-pink-500/30',
+    icon: 'sparkles',
+  },
+  {
+    id: 5,
+    title: 'DASHBOARD REDESIGN',
+    description: 'A modern dashboard redesign built with React and crafted visually in Figma. Cleaner, faster, and more intuitive.',
+    categories: ['React', 'Figma/Design'],
+    gradientFrom: 'from-orange-400',
+    gradientVia: 'via-amber-500',
+    gradientTo: 'to-red-600',
+    hoverShadow: 'hover:shadow-orange-500/30',
+    icon: 'layers',
+  },
+];
+
+interface ProjectsProps {
+  onViewProject: (projectId: number) => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ onViewProject }) => {
   return (
     <section id="work" className="py-20 px-6 relative scroll-mt-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
+
         {/* --- Left Column: Featured Projects (2/3) --- */}
         <div className="lg:col-span-2 flex flex-col gap-4">
           <h3 className="text-gray-400 font-bold tracking-widest text-xs uppercase mb-2 ml-1">Featured Projects</h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
-            
-            {/* Project Card 1 - BubbleSort */}
-            <div className="group relative rounded-[2.5rem] bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 p-8 flex flex-col justify-between min-h-[340px] shadow-2xl hover:shadow-pink-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-               {/* Background Texture/Noise */}
-               <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
-               
-               {/* Icon/Graphic */}
-               <div className="w-16 h-16 rounded-2xl bg-black/20 backdrop-blur-sm flex items-center justify-center mb-8 shadow-inner border border-white/10 relative z-10">
-                  <Brain className="text-white opacity-90" size={32} />
-               </div>
 
-               <div className="relative z-10">
-                 <h4 className="text-2xl font-black text-white mb-2 tracking-tight">Project BubbleSort</h4>
-                 <p className="text-white/80 text-xs font-bold mb-8 line-clamp-2 leading-relaxed">
-                   Teercuriam omrareion condres tix ocomaloim noot. Visualizing sorting algorithms.
-                 </p>
-                 <button className="px-6 py-3 rounded-full border border-white/40 bg-white/20 backdrop-blur-md text-[10px] font-black text-white hover:bg-white hover:text-pink-600 transition-colors uppercase tracking-widest shadow-lg">
-                   View Project
-                 </button>
-               </div>
-            </div>
+            {featuredProjects.map((project) => (
+              <div
+                key={project.id}
+                className={`group relative rounded-[2.5rem] bg-gradient-to-br ${project.gradientFrom} ${project.gradientVia} ${project.gradientTo} p-8 flex flex-col justify-between min-h-[340px] shadow-2xl ${project.hoverShadow} transition-all duration-500 hover:-translate-y-2 overflow-hidden`}
+              >
+                {/* Background Texture/Noise */}
+                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
 
-            {/* Project Card 2 - Neon Flow */}
-            <div className="group relative rounded-[2.5rem] bg-gradient-to-br from-blue-500 via-cyan-400 to-emerald-400 p-8 flex flex-col justify-between min-h-[340px] shadow-2xl hover:shadow-cyan-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-               {/* Background Texture */}
-               <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+                {/* Icon/Graphic */}
+                <div className="w-16 h-16 rounded-2xl bg-black/20 backdrop-blur-sm flex items-center justify-center mb-8 shadow-inner border border-white/10 relative z-10">
+                  {project.icon === 'sparkles' && <Sparkles className="text-white opacity-90" size={32} />}
+                  {project.icon === 'layers' && <Layers className="text-white opacity-90" size={32} />}
+                </div>
 
-               {/* Icon/Graphic */}
-               <div className="w-20 h-14 rounded-xl bg-black/40 backdrop-blur-sm flex items-center justify-center mb-8 shadow-lg overflow-hidden border border-white/10 relative z-10">
-                  <Monitor className="text-cyan-300" size={28} />
-               </div>
-
-               <div className="relative z-10">
-                 <h4 className="text-2xl font-black text-white mb-2 tracking-tight">Neon Flow</h4>
-                 <p className="text-[#064e3b] text-xs font-bold mb-8 line-clamp-2 leading-relaxed opacity-80">
-                   Kenyoomntter proale volds rithu conammet. High-performance dashboard aesthetics.
-                 </p>
-                 <button className="px-6 py-3 rounded-full border border-[#064e3b]/20 bg-[#064e3b]/10 backdrop-blur-md text-[10px] font-black text-[#064e3b] hover:bg-[#064e3b] hover:text-white transition-colors uppercase tracking-widest shadow-lg">
-                   View Project
-                 </button>
-               </div>
-            </div>
+                <div className="relative z-10">
+                  <h4 className="text-2xl font-black text-white mb-2 tracking-tight">{project.title}</h4>
+                  <p className="text-white/80 text-xs font-bold mb-4 line-clamp-2 leading-relaxed">
+                    {project.description}
+                  </p>
+                  {/* Categories */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.categories.slice(0, 3).map((cat) => (
+                      <span key={cat} className="px-3 py-1 rounded-full bg-black/20 text-[10px] text-white/80 font-bold">
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => onViewProject(project.id)}
+                    className="px-6 py-3 rounded-full border border-white/40 bg-white/20 backdrop-blur-md text-[10px] font-black text-white hover:bg-white hover:text-pink-600 transition-colors uppercase tracking-widest shadow-lg"
+                  >
+                    View Project
+                  </button>
+                </div>
+              </div>
+            ))}
 
           </div>
         </div>
@@ -77,7 +102,7 @@ const Projects: React.FC = () => {
                        </div>
                     </div>
                     <div>
-                       <h5 className="text-white font-bold text-lg tracking-tight">Happy Clients</h5>
+                       <h5 className="text-white font-bold text-lg tracking-tight">Hayley B.</h5>
                        <div className="flex gap-1 mt-1">
                           {[1,2,3,4,5].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_5px_rgba(74,222,128,0.5)]"></div>)}
                        </div>
@@ -85,7 +110,7 @@ const Projects: React.FC = () => {
                  </div>
                  
                  <p className="text-gray-400 text-sm leading-relaxed font-medium">
-                   "Toresa but transmissions net from timelines limit now also oversee awesome new nexus-8!"
+                   "Vlad is one of the most amazing freelancers I've ever worked with! He's exceptionally talented and definitely a great web developer. Highly recommended!!!"
                  </p>
               </div>
             </div>
@@ -95,7 +120,7 @@ const Projects: React.FC = () => {
                <div className="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
                   <MessageSquare size={18} />
                </div>
-               <span className="text-gray-400 text-xs font-bold tracking-wide group-hover:text-white transition-colors">Mapay be ustme smarttest</span>
+               <span className="text-gray-400 text-xs font-bold tracking-wide group-hover:text-white transition-colors">Highly commendable work- thank you!!! I will definitely hire you again!!!</span>
             </div>
 
           </div>
