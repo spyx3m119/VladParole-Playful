@@ -33,75 +33,105 @@ const AboutPage: React.FC<AboutPageProps> = ({ onOpenContact }) => {
 
             {/* Avatar Circle with Gradient Border */}
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full p-[6px] bg-gradient-to-tr from-cyan-400 via-purple-500 to-pink-500 shadow-[0_0_40px_rgba(168,85,247,0.5)]">
-               <div className="w-full h-full rounded-full bg-gradient-to-b from-sky-300 to-sky-500 overflow-hidden relative">
-                 {/* Character with hoodie style */}
-                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-44 h-52">
-                    {/* Hoodie - behind face */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-20 bg-purple-600 rounded-t-[2rem] z-0">
-                      {/* Hoodie strings */}
-                      <div className="absolute top-2 left-1/2 -translate-x-[20px] w-1 h-6 bg-white rounded-full"></div>
-                      <div className="absolute top-2 left-1/2 translate-x-[14px] w-1 h-6 bg-white rounded-full"></div>
-                      {/* Kangaroo pocket */}
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-purple-700 rounded-t-xl"></div>
-                    </div>
-                    {/* Face/Head - on top */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-32 bg-[#f5d0c5] rounded-[2.5rem] z-10">
-                      {/* Hair base - smooth rounded with gradient */}
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-[120px] h-14 bg-gradient-to-b from-gray-700 via-gray-800 to-gray-700 rounded-t-[3rem] rounded-b-lg"></div>
-                      {/* Hair top layer with softer edges */}
-                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-10 bg-gradient-to-b from-gray-600 to-gray-800 rounded-t-[2.5rem]"></div>
-                      {/* Soft messy strands with rounded tips */}
-                      <div className="absolute -top-5 left-4 w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-500 rounded-full opacity-90"></div>
-                      <div className="absolute -top-6 left-7 w-3 h-7 bg-gradient-to-t from-gray-800 to-gray-600 rounded-full opacity-95"></div>
-                      <div className="absolute -top-5 left-10 w-2.5 h-5 bg-gradient-to-t from-gray-700 to-gray-400 rounded-full opacity-85"></div>
-                      <div className="absolute -top-6 right-4 w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-500 rounded-full opacity-90"></div>
-                      <div className="absolute -top-6 right-7 w-3 h-7 bg-gradient-to-t from-gray-800 to-gray-600 rounded-full opacity-95"></div>
-                      <div className="absolute -top-5 right-10 w-2.5 h-5 bg-gradient-to-t from-gray-700 to-gray-400 rounded-full opacity-85"></div>
-                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-4 h-7 bg-gradient-to-t from-gray-800 to-gray-500 rounded-full"></div>
-                      <div className="absolute -top-5 left-1/2 -translate-x-[12px] w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-400 rounded-full opacity-90"></div>
-                      <div className="absolute -top-5 left-1/2 translate-x-[8px] w-3 h-6 bg-gradient-to-t from-gray-700 to-gray-500 rounded-full opacity-90"></div>
-                      {/* Smooth side hair */}
-                      <div className="absolute top-0 left-0 w-6 h-8 bg-gradient-to-r from-gray-600 to-transparent rounded-bl-2xl rounded-tr-xl"></div>
-                      <div className="absolute top-0 right-0 w-6 h-8 bg-gradient-to-l from-gray-600 to-transparent rounded-br-2xl rounded-tl-xl"></div>
-                      {/* Gray temple highlights - blended */}
-                      <div className="absolute top-3 left-0 w-6 h-4 bg-gradient-to-r from-gray-400 to-transparent rounded-r-full opacity-60"></div>
-                      <div className="absolute top-3 right-0 w-6 h-4 bg-gradient-to-l from-gray-400 to-transparent rounded-l-full opacity-60"></div>
-                      {/* Eyebrows */}
-                      <div className="absolute top-12 left-5 w-5 h-1.5 bg-gray-700 rounded-full rotate-[-5deg]"></div>
-                      <div className="absolute top-12 right-5 w-5 h-1.5 bg-gray-700 rounded-full rotate-[5deg]"></div>
-                      {/* Eyes */}
-                      <div className="absolute top-16 left-6 w-4 h-4 bg-white rounded-full">
-                        <div className="absolute top-1 left-1 w-2.5 h-2.5 bg-stone-800 rounded-full"></div>
-                      </div>
-                      <div className="absolute top-16 right-6 w-4 h-4 bg-white rounded-full">
-                        <div className="absolute top-1 right-1 w-2.5 h-2.5 bg-stone-800 rounded-full"></div>
-                      </div>
-                      {/* Nose */}
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-2 h-3 bg-[#e8bfb5] rounded-full"></div>
-                      {/* Chin Beard - thin and light */}
-                      <div className="absolute top-[98px] left-1/2 -translate-x-1/2 w-6 h-5 bg-gray-400 rounded-b-xl opacity-50"></div>
-                      {/* Smile */}
-                      <div className="absolute top-[94px] left-1/2 -translate-x-1/2 w-5 h-2 border-b-[3px] border-red-400 rounded-b-full"></div>
-                      {/* Cheeks */}
-                      <div className="absolute top-20 left-2 w-4 h-3 bg-pink-300 rounded-full opacity-40"></div>
-                      <div className="absolute top-20 right-2 w-4 h-3 bg-pink-300 rounded-full opacity-40"></div>
-                    </div>
-                 </div>
-                 {/* Laptop in front - back side view */}
-                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20">
+               <div className="w-full h-full rounded-full overflow-hidden">
+                 <svg viewBox="0 0 200 200" className="w-full h-full">
+                   {/* Background */}
+                   <defs>
+                     <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                       <stop offset="0%" stopColor="#7dd3fc" />
+                       <stop offset="100%" stopColor="#0ea5e9" />
+                     </linearGradient>
+                   </defs>
+                   <circle cx="100" cy="100" r="100" fill="url(#skyGradient)" />
+
+                   {/* Hoodie Body */}
+                   <path d="M40 200 Q40 160 60 150 L140 150 Q160 160 160 200 Z" fill="#9333ea" />
+                   {/* Hoodie Pocket */}
+                   <rect x="70" y="175" width="60" height="20" rx="8" fill="#7e22ce" />
+                   {/* Hoodie Strings */}
+                   <rect x="85" y="152" width="3" height="18" rx="1.5" fill="#ffffff" />
+                   <rect x="112" y="152" width="3" height="18" rx="1.5" fill="#ffffff" />
+
+                   {/* Face */}
+                   <ellipse cx="100" cy="110" rx="40" ry="48" fill="#f5d0c5" />
+
+                   {/* Hair Base */}
+                   <ellipse cx="100" cy="72" rx="44" ry="24" fill="#4b5563" />
+                   {/* Hair Top Strands */}
+                   <ellipse cx="75" cy="58" rx="6" ry="12" fill="#6b7280" />
+                   <ellipse cx="88" cy="54" rx="5" ry="14" fill="#4b5563" />
+                   <ellipse cx="100" cy="52" rx="6" ry="15" fill="#6b7280" />
+                   <ellipse cx="112" cy="54" rx="5" ry="14" fill="#4b5563" />
+                   <ellipse cx="125" cy="58" rx="6" ry="12" fill="#6b7280" />
+                   {/* White Hair Strands */}
+                   <ellipse cx="82" cy="56" rx="3" ry="10" fill="#e5e7eb" opacity="0.8" />
+                   <ellipse cx="95" cy="53" rx="2" ry="11" fill="#f3f4f6" opacity="0.7" />
+                   <ellipse cx="118" cy="55" rx="3" ry="10" fill="#e5e7eb" opacity="0.8" />
+                   {/* Side Hair */}
+                   <path d="M60 75 Q55 85 58 100" stroke="#4b5563" strokeWidth="12" fill="none" strokeLinecap="round" />
+                   <path d="M140 75 Q145 85 142 100" stroke="#4b5563" strokeWidth="12" fill="none" strokeLinecap="round" />
+                   {/* Gray Temple Highlights */}
+                   <path d="M62 88 Q58 92 60 98" stroke="#9ca3af" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.6" />
+                   <path d="M138 88 Q142 92 140 98" stroke="#9ca3af" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.6" />
+
+                   {/* Eyebrows */}
+                   <rect x="75" y="96" width="16" height="4" rx="2" fill="#4b5563" transform="rotate(-5 83 98)" />
+                   <rect x="109" y="96" width="16" height="4" rx="2" fill="#4b5563" transform="rotate(5 117 98)" />
+
+                   {/* Eyes */}
+                   <circle cx="83" cy="110" r="8" fill="#ffffff" />
+                   <circle cx="117" cy="110" r="8" fill="#ffffff" />
+                   <circle cx="85" cy="111" r="5" fill="#292524" />
+                   <circle cx="115" cy="111" r="5" fill="#292524" />
+
+                   {/* Nose */}
+                   <ellipse cx="100" cy="124" rx="4" ry="6" fill="#e8bfb5" />
+
+                   {/* Cheeks */}
+                   <ellipse cx="72" cy="122" rx="8" ry="5" fill="#fda4af" opacity="0.4" />
+                   <ellipse cx="128" cy="122" rx="8" ry="5" fill="#fda4af" opacity="0.4" />
+
+                   {/* Stubble Beard */}
+                   <g opacity="0.6">
+                     {/* Chin area stubble */}
+                     <circle cx="92" cy="145" r="1" fill="#6b7280" />
+                     <circle cx="96" cy="147" r="1" fill="#6b7280" />
+                     <circle cx="100" cy="148" r="1" fill="#6b7280" />
+                     <circle cx="104" cy="147" r="1" fill="#6b7280" />
+                     <circle cx="108" cy="145" r="1" fill="#6b7280" />
+                     <circle cx="94" cy="150" r="1" fill="#6b7280" />
+                     <circle cx="98" cy="152" r="1" fill="#6b7280" />
+                     <circle cx="102" cy="152" r="1" fill="#6b7280" />
+                     <circle cx="106" cy="150" r="1" fill="#6b7280" />
+                     <circle cx="100" cy="155" r="1" fill="#6b7280" />
+                     <circle cx="96" cy="154" r="1" fill="#6b7280" />
+                     <circle cx="104" cy="154" r="1" fill="#6b7280" />
+                     {/* Jawline stubble */}
+                     <circle cx="88" cy="142" r="1" fill="#6b7280" />
+                     <circle cx="112" cy="142" r="1" fill="#6b7280" />
+                     <circle cx="85" cy="138" r="1" fill="#6b7280" />
+                     <circle cx="115" cy="138" r="1" fill="#6b7280" />
+                     <circle cx="82" cy="134" r="1" fill="#6b7280" />
+                     <circle cx="118" cy="134" r="1" fill="#6b7280" />
+                     {/* Upper lip area */}
+                     <circle cx="94" cy="135" r="0.8" fill="#6b7280" />
+                     <circle cx="98" cy="134" r="0.8" fill="#6b7280" />
+                     <circle cx="102" cy="134" r="0.8" fill="#6b7280" />
+                     <circle cx="106" cy="135" r="0.8" fill="#6b7280" />
+                   </g>
+
+                   {/* Smile */}
+                   <path d="M92 138 Q100 146 108 138" stroke="#f87171" strokeWidth="3" fill="none" strokeLinecap="round" />
+
                    {/* Laptop Lid (back side) */}
-                   <div className="w-28 h-16 bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-md border-2 border-gray-400 relative shadow-inner">
-                     {/* Apple-style logo or simple design element */}
-                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-7 flex items-center justify-center">
-                       <div className="w-5 h-6 bg-gray-400 rounded-md opacity-60"></div>
-                       <div className="absolute w-1.5 h-1.5 bg-gray-500 rounded-full -top-0.5"></div>
-                     </div>
-                   </div>
-                   {/* Laptop Base/Keyboard area */}
-                   <div className="w-32 h-2 bg-gray-400 rounded-b-md -mt-0.5 mx-auto relative">
-                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-1 bg-gray-500 rounded-full"></div>
-                   </div>
-                 </div>
+                   <rect x="60" y="170" width="80" height="45" rx="4" fill="#e5e7eb" stroke="#9ca3af" strokeWidth="2" />
+                   {/* Laptop Logo */}
+                   <rect x="92" y="185" width="16" height="18" rx="3" fill="#9ca3af" opacity="0.6" />
+                   <circle cx="100" cy="182" r="3" fill="#9ca3af" />
+                   {/* Laptop Base */}
+                   <rect x="55" y="215" width="90" height="6" rx="2" fill="#9ca3af" />
+                   <ellipse cx="100" cy="218" rx="15" ry="2" fill="#6b7280" />
+                 </svg>
                </div>
             </div>
           </div>
