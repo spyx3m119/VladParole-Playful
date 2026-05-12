@@ -165,7 +165,7 @@ const projects: Project[] = [
     title: 'COLLEGE ATHLETE RECRUITING WEBSITE',
     description: 'A custom WordPress-powered recruiting platform designed like a social media hub for college athletes.\n\nBuilt with a fully custom plugin and a tailor-made UI, this site helps athletes showcase their skills while giving recruiters an easy, engaging way to discover new talent.',
     story: 'This project was a fun mix of creativity, strategy, and custom engineering.\n\nThe goal was to build a college athlete recruiting website that felt as familiar as a social media profile—but with features specifically designed for athletic recruitment. Using WordPress as the backbone, I developed a fully custom plugin and designed the entire interface to create a smooth, modern, and highly interactive experience.\n\nI handled everything end-to-end:\n- Designing athlete profile layouts with a social-media-style vibe\n- Building a custom plugin to manage profiles, stats, highlights, and recruitable details\n- Creating search and filtering tools to help recruiters find the right athletes quickly\n- Ensuring the UI looked bold, energetic, and sports-driven\n- Writing custom WordPress logic to handle data, feeds, and dynamic content\n\nThe biggest challenge—and the most rewarding part—was blending social features with a serious recruitment workflow. It had to look fun for athletes and feel powerful for recruiters.\n\nKey Takeaways / Learnings:\n\n- Learned how to architect complex WP plugins that go far beyond typical CMS use cases.\n- Improved my ability to design user profiles that are both visually appealing and data-rich.\n- Gained a deeper understanding of how recruiters evaluate athletes, and how UX can streamline that process.\n- Mastered the balance between “social media style” design and professional-level functionality.\n\nThe final product was fast, engaging, and incredibly practical—a platform athletes could proudly showcase, and recruiters could rely on.',
-    categories: ['WOrdpress', 'PHP', 'Figma/Design'],
+    categories: ['Wordpress', 'PHP', 'Figma/Design'],
     titleColor: 'text-amber-300',
     gradientFrom: 'from-amber-400',
     gradientTo: 'to-orange-600',
@@ -308,7 +308,7 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
   return (
     <div className="pt-28 pb-20 px-6 min-h-screen">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Header */}
         <div className="text-center mb-16 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] pointer-events-none"></div>
@@ -320,7 +320,7 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
           <p className="text-gray-400 tracking-[0.2em] text-sm uppercase font-bold">
             A Collection of Creative Journeys
           </p>
-          
+
           {/* Decorative particles */}
           <div className="absolute top-0 right-1/4 w-4 h-4 bg-pink-500 rounded-full blur-[2px] animate-bounce"></div>
           <div className="absolute bottom-0 left-1/4 w-3 h-3 bg-cyan-400 rounded-full blur-[1px] animate-ping duration-[3000ms]"></div>
@@ -366,9 +366,9 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
 
               {/* Orbiting dots */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-pink-400 rounded-full animate-ping"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-cyan-400 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
-              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-3 h-3 bg-purple-400 rounded-full animate-ping" style={{animationDelay: '1.5s'}}></div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-cyan-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-3 h-3 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
             </div>
           </div>
         </div>
@@ -385,11 +385,10 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
                 <button
                   key={filter}
                   onClick={() => toggleFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
-                    activeFilters.includes(filter)
+                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${activeFilters.includes(filter)
                       ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.5),inset_0_0_10px_rgba(34,211,238,0.1)]'
                       : 'text-gray-400 border border-transparent hover:text-white hover:bg-white/5'
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -508,21 +507,19 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
             {personalTools.map((tool) => (
               <div
                 key={tool.id}
-                className={`h-[400px] rounded-[2.5rem] bg-[#1e1b4b] relative overflow-hidden group border border-white/5 hover:border-opacity-50 transition-colors cursor-pointer ${
-                  tool.id === 'shopify-app' ? 'hover:border-green-500/50' :
-                  tool.id === 'shorts-creator' ? 'hover:border-red-500/50' :
-                  tool.id === 'yt-thumbnail-generator' ? 'hover:border-orange-500/50' :
-                  'hover:border-cyan-500/50'
-                }`}
+                className={`h-[400px] rounded-[2.5rem] bg-[#1e1b4b] relative overflow-hidden group border border-white/5 hover:border-opacity-50 transition-colors cursor-pointer ${tool.id === 'shopify-app' ? 'hover:border-green-500/50' :
+                    tool.id === 'shorts-creator' ? 'hover:border-red-500/50' :
+                      tool.id === 'yt-thumbnail-generator' ? 'hover:border-orange-500/50' :
+                        'hover:border-cyan-500/50'
+                  }`}
                 onClick={() => tool.url ? window.open(tool.url, '_blank') : setSelectedTool(tool)}
               >
                 {/* Background gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${
-                  tool.id === 'shopify-app' ? 'from-green-900 via-emerald-900 to-teal-900' :
-                  tool.id === 'shorts-creator' ? 'from-red-900 via-rose-900 to-pink-900' :
-                  tool.id === 'yt-thumbnail-generator' ? 'from-orange-900 via-amber-900 to-yellow-900' :
-                  'from-cyan-900 via-blue-900 to-indigo-900'
-                }`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${tool.id === 'shopify-app' ? 'from-green-900 via-emerald-900 to-teal-900' :
+                    tool.id === 'shorts-creator' ? 'from-red-900 via-rose-900 to-pink-900' :
+                      tool.id === 'yt-thumbnail-generator' ? 'from-orange-900 via-amber-900 to-yellow-900' :
+                        'from-cyan-900 via-blue-900 to-indigo-900'
+                  }`}></div>
 
                 {/* Center icon/graphic */}
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -577,7 +574,7 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
                 {tool.id === 'shopify-app' && (
                   <>
                     <div className="absolute top-8 right-8 w-16 h-16 bg-green-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                    <div className="absolute bottom-32 left-8 w-20 h-20 bg-emerald-500 rounded-full blur-2xl opacity-20 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                    <div className="absolute bottom-32 left-8 w-20 h-20 bg-emerald-500 rounded-full blur-2xl opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                   </>
                 )}
                 {tool.id === 'shorts-creator' && (
@@ -596,15 +593,15 @@ const WorkPage: React.FC<WorkPageProps> = ({ initialProjectId, onProjectOpened }
                 )}
                 {tool.id === 'web-design-prototyper' && (
                   <>
-                    <div className="absolute top-8 left-8 w-12 h-12 bg-cyan-400 rounded-full blur-xl opacity-30 animate-ping" style={{animationDuration: '3s'}}></div>
+                    <div className="absolute top-8 left-8 w-12 h-12 bg-cyan-400 rounded-full blur-xl opacity-30 animate-ping" style={{ animationDuration: '3s' }}></div>
                     <div className="absolute top-16 right-16 w-16 h-16 bg-blue-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
                   </>
                 )}
                 {tool.id === 'yt-thumbnail-generator' && (
                   <>
                     <div className="absolute top-8 right-8 w-16 h-16 bg-orange-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                    <div className="absolute top-12 left-8 w-12 h-12 bg-amber-500 rounded-full blur-2xl opacity-20 animate-pulse" style={{animationDelay: '0.3s'}}></div>
-                    <div className="absolute bottom-36 right-12 w-10 h-10 bg-yellow-400 rounded-full blur-xl opacity-25 animate-ping" style={{animationDuration: '2s'}}></div>
+                    <div className="absolute top-12 left-8 w-12 h-12 bg-amber-500 rounded-full blur-2xl opacity-20 animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="absolute bottom-36 right-12 w-10 h-10 bg-yellow-400 rounded-full blur-xl opacity-25 animate-ping" style={{ animationDuration: '2s' }}></div>
                   </>
                 )}
 
